@@ -48,7 +48,9 @@ collections:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Identificador (slug)", name: "slug", widget: "string", hint: "Usado no link da página do projeto. Use letras minúsculas e hifens. Ex.: stop-word-duel" }
               - { label: "ID do vídeo no Vimeo", name: "vimeo", widget: "string", hint: "Só o número. Ex.: em vimeo.com/719671885 o ID é 719671885" }
-              - { label: "Início do preview (segundos)", name: "previewStart", widget: "number", required: false, default: 0, value_type: "float", min: 0, step: 0.1, hint: "Onde o preview do hover começa. Use ponto para decimais (ex.: 3.2). O loop dura ~2,4s." }
+              - { label: "Vídeo de preview (upload, 2-3s)", name: "previewFile", widget: "file", required: false, hint: "Clipe curto (mp4/webm) só para o card. Recomendado: já cortado quadrado. Crop perfeito em qualquer proporção e o 1º frame vira a capa. Tem prioridade sobre os campos abaixo." }
+              - { label: "Vídeo de preview (ID do Vimeo, alternativa)", name: "previewVimeo", widget: "string", required: false, hint: "Use outro vídeo do Vimeo só para o preview do card (em vez do vídeo principal). Funciona melhor com vídeos 16:9." }
+              - { label: "Início do preview (segundos)", name: "previewStart", widget: "number", required: false, default: 0, value_type: "float", min: 0, step: 0.1, hint: "Só vale para preview do Vimeo. Onde o loop começa. Use ponto para decimais (ex.: 3.2). O loop dura ~2,4s." }
               - { label: "Categoria", name: "category", widget: "select", options: ["Motion", "Video Edition", "Graphic Design"] }
               - { label: "Destaque na home (featured)", name: "featured", widget: "boolean", default: false, hint: "Ligado = aparece na página inicial (até 6). Sempre aparece na página WORK." }
               - { label: "Capa (URL da imagem)", name: "thumb", widget: "string", required: false, hint: "Deixe em branco para usar a capa automática do Vimeo." }
@@ -60,11 +62,24 @@ collections:
                 summary: "{{fields.type}}"
                 hint: "Monte a página do projeto na ordem que quiser. Adicione blocos e arraste para reordenar."
                 types:
+                  - label: "Cabeçalho"
+                    name: "header"
+                    widget: object
+                    fields:
+                      - { label: "Título principal", name: "title", widget: "string" }
+                      - { label: "Subtítulo", name: "subtitle", widget: "string", required: false }
+                      - { label: "Citação / about do cliente", name: "clientQuote", widget: "text", required: false }
+                      - { label: "Cliente", name: "client", widget: "string", required: false }
                   - label: "Título de seção"
                     name: "heading"
                     widget: object
                     fields:
                       - { label: "Texto", name: "text", widget: "string" }
+                  - label: "Divisor (linha)"
+                    name: "divider"
+                    widget: object
+                    fields:
+                      - { label: "Largura", name: "width", widget: "select", options: ["curta", "total"], default: "curta", required: false }
                   - label: "Texto"
                     name: "text"
                     widget: object
@@ -96,6 +111,7 @@ collections:
                         widget: "list"
                         label_singular: "Item"
                         fields:
+                          - { label: "Título (opcional)", name: "title", widget: "string", required: false }
                           - { label: "Tipo", name: "mediaType", widget: "select", options: ["video", "imagem"], default: "video" }
                           - { label: "ID do vídeo (Vimeo)", name: "vimeo", widget: "string", required: false }
                           - { label: "Imagem / GIF", name: "image", widget: "image", required: false }

@@ -98,8 +98,9 @@ function setupObserver() {
 }
 function ensurePlayer(card) {
   if (card._player || !window.Vimeo) return;
-  const start = Number(card.dataset.start) || 0;
   const holder = card.querySelector(".player");
+  if (!holder) return;                 // cards com vídeo enviado não usam player do Vimeo
+  const start = Number(card.dataset.start) || 0;
   // background:true = autoplay mudo em loop, sem controles — método mais confiável no Chrome.
   const player = new Vimeo.Player(holder, {
     id: card.dataset.vimeo, background: true, muted: true, dnt: true
@@ -119,35 +120,49 @@ function ensurePlayer(card) {
 
 function makeCard(p) {
   const card = el("div", "card");
-  card.dataset.vimeo = p.vimeo;
-  card.dataset.start = p.previewStart || 0;
-  const player = el("div", "player");
-  const img = el("img", "thumb");
-  img.src = p.thumb || ("https://vumbnail.com/" + p.vimeo + ".jpg");
-  img.alt = p.title || ""; img.loading = "lazy";
   const overlay = el("div", "overlay");
   overlay.appendChild(el("div", "meta", `<div class="t">${p.title || ""}</div><div class="c">${p.category || ""}</div>`));
-  card.append(player, img, overlay);
 
-  card.addEventListener("mouseenter", () => {
-    ensurePlayer(card);
-    const start = Number(card.dataset.start) || 0;
-    const pl = card._player;
-    if (!pl) return;
-    (card._ready || Promise.resolve()).then(() => {
-      pl.setCurrentTime(start).catch(() => {});
-      pl.play().catch(() => {});
+  if (p.previewFile) {
+    // Vídeo enviado (mp4/webm): object-fit cover recorta qualquer proporção em 1:1, 1º frame = capa.
+    const v = el("video", "thumb-vid");
+    v.src = p.previewFile + "#t=0.1";
+    v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata";
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
+    card.append(v, overlay);
+    card.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
+    card.addEventListener("mouseleave", () => { v.pause(); try { v.currentTime = 0; } catch (e) {} });
+  } else {
+    // Preview via Vimeo (vídeo de preview alternativo, ou o principal)
+    card.dataset.vimeo = p.previewVimeo || p.vimeo;
+    card.dataset.start = p.previewStart || 0;
+    const player = el("div", "player");
+    const img = el("img", "thumb");
+    img.src = p.thumb || ("https://vumbnail.com/" + (p.previewVimeo || p.vimeo) + ".jpg");
+    img.alt = p.title || ""; img.loading = "lazy";
+    card.append(player, img, overlay);
+
+    card.addEventListener("mouseenter", () => {
+      ensurePlayer(card);
+      const start = Number(card.dataset.start) || 0;
+      const pl = card._player;
+      if (!pl) return;
+      (card._ready || Promise.resolve()).then(() => {
+        pl.setCurrentTime(start).catch(() => {});
+        pl.play().catch(() => {});
+      });
     });
-  });
-  card.addEventListener("mouseleave", () => {
-    const start = Number(card.dataset.start) || 0;
-    const pl = card._player;
-    if (!pl) return;
-    (card._ready || Promise.resolve()).then(() => {
-      pl.pause().catch(() => {});
-      pl.setCurrentTime(start).catch(() => {});
+    card.addEventListener("mouseleave", () => {
+      const start = Number(card.dataset.start) || 0;
+      const pl = card._player;
+      if (!pl) return;
+      (card._ready || Promise.resolve()).then(() => {
+        pl.pause().catch(() => {});
+        pl.setCurrentTime(start).catch(() => {});
+      });
     });
-  });
+  }
+
   card.addEventListener("click", () => { window.location.href = "project.html?id=" + encodeURIComponent(p.slug); });
   return card;
 }
@@ -171,10 +186,49 @@ function videoEmbed(id, gif) {
 }
 function imgEmbed(src) { return src ? `<img class="b-img" src="${src}" loading="lazy" alt="" />` : ""; }
 function mediaEmbed(b) { return b.mediaType === "imagem" ? imgEmbed(b.image) : videoEmbed(b.vimeo, b.gif !== false); }
+// Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som
+function cleanPlayerHtml(id) {
+  if (!id) return "";
+  return `<div class="ratio clean-player" data-vimeo="${id}">
+    <img class="cp-cover" src="https://vumbnail.com/${id}.jpg" alt="" />
+    <button class="cp-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+  </div>`;
+}
+function initCleanPlayers() {
+  document.querySelectorAll(".clean-player").forEach(cp => {
+    cp.addEventListener("click", () => {
+      if (cp._player) {
+        cp._player.getPaused().then(pp => (pp ? cp._player.play() : cp._player.pause())).catch(() => {});
+        return;
+      }
+      if (!window.Vimeo) return;
+      cp.classList.add("playing");
+      const holder = document.createElement("div");
+      holder.className = "cp-holder";
+      cp.appendChild(holder);
+      cp._player = new Vimeo.Player(holder, {
+        id: cp.dataset.vimeo, autoplay: true, controls: false,
+        title: false, byline: false, portrait: false, dnt: true
+      });
+      cp._player.play().catch(() => {});
+    });
+  });
+}
 
 function renderBlock(b) {
   switch (b.type) {
+    case "header": {
+      const sub = b.subtitle ? `<div class="bh-sub">${esc(b.subtitle)}</div>` : "";
+      const quote = b.clientQuote ? `<p class="bh-quote">${esc(b.clientQuote)}</p>` : "";
+      const line = b.client ? `<hr class="bh-line" />` : "";
+      const client = b.client ? `<p class="bh-client"><strong>Client:</strong> ${esc(b.client)}</p>` : "";
+      return `<div class="b-header">
+        <div class="bh-left"><h1 class="bh-title">${esc(b.title)}</h1>${sub}</div>
+        <div class="bh-right">${quote}${line}${client}</div>
+      </div>`;
+    }
     case "heading": return `<h2 class="b-heading">${esc(b.text)}</h2>`;
+    case "divider": return `<div class="b-divider ${b.width === "total" ? "full" : ""}"><hr /></div>`;
     case "text": return `<div class="b-text">${md(b.body)}</div>`;
     case "text_media": {
       const txt = `<div class="b-tm-text">${md(b.body)}</div>`;
@@ -182,11 +236,14 @@ function renderBlock(b) {
       const cls = b.side === "esquerda" ? "media-left" : "media-right";
       return `<div class="b-textmedia ${cls}">${txt}${media}</div>`;
     }
-    case "video": return `<div class="b-video">${videoEmbed(b.vimeo, !!b.gif)}</div>`;
+    case "video": return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true) : cleanPlayerHtml(b.vimeo)}</div>`;
     case "gallery": {
       const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
-      const items = (b.items || []).map(it =>
-        `<div class="g-item">${it.mediaType === "imagem" ? imgEmbed(it.image) : videoEmbed(it.vimeo, true)}</div>`).join("");
+      const items = (b.items || []).map(it => {
+        const media = it.mediaType === "imagem" ? imgEmbed(it.image) : videoEmbed(it.vimeo, true);
+        const title = it.title ? `<div class="g-title">${esc(it.title)}</div>` : "";
+        return `<div class="g-item">${title}${media}</div>`;
+      }).join("");
       return `<div class="b-gallery" style="grid-template-columns:repeat(${cols},1fr)">${items}</div>`;
     }
     case "image": return `<div class="b-image ${b.full ? "full" : ""}">${imgEmbed(b.image)}</div>`;
@@ -202,12 +259,11 @@ function renderProject(projects) {
   document.title = p.title + " | Julia Milreu";
   const blocks = (p.blocks && p.blocks.length)
     ? p.blocks.map(renderBlock).join("")
-    : `<div class="b-video">${videoEmbed(p.vimeo, false)}</div>`;
+    : `<div class="b-video">${cleanPlayerHtml(p.vimeo)}</div>`;
   wrap.innerHTML =
     `<a class="back" href="work.html">← VOLTAR</a>
-     <h1>${esc(p.title)}</h1>
-     <div class="cat">${esc(p.category || "")}</div>
      <div class="blocks">${blocks}</div>`;
+  initCleanPlayers();
 }
 
 async function init() {
