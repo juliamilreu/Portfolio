@@ -46,10 +46,29 @@ function fillCommon(site) {
     });
   }
 
-  // Reel (home)
+  // Reel (home) — capa personalizada + play limpo (sem barra do Vimeo)
   const reel = document.querySelector("[data-reel]");
   if (reel && site.reel) {
-    reel.innerHTML = `<iframe src="https://player.vimeo.com/video/${site.reel}?title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    const cover = site.reelCover || `https://vumbnail.com/${site.reel}.jpg`;
+    reel.innerHTML =
+      `<img class="reel-cover" src="${cover}" alt="" />
+       <button class="reel-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
+    reel.addEventListener("click", () => {
+      if (reel._player) {
+        reel._player.getPaused().then(pp => (pp ? reel._player.play() : reel._player.pause())).catch(() => {});
+        return;
+      }
+      reel.classList.add("playing");
+      const holder = document.createElement("div");
+      holder.className = "reel-holder";
+      reel.appendChild(holder);
+      // controls:false esconde a barra do Vimeo; o clique do usuário libera o som
+      reel._player = new Vimeo.Player(holder, {
+        id: site.reel, autoplay: true, controls: false,
+        title: false, byline: false, portrait: false, dnt: true
+      });
+      reel._player.play().catch(() => {});
+    });
   }
 }
 
@@ -66,14 +85,17 @@ function ensurePlayer(card) {
   if (card._player || !window.Vimeo) return;
   const start = Number(card.dataset.start) || 0;
   const holder = card.querySelector(".player");
+  // background:true = autoplay mudo em loop, sem controles — método mais confiável no Chrome.
   const player = new Vimeo.Player(holder, {
-    id: card.dataset.vimeo, muted: true, controls: false, loop: false,
-    autopause: false, playsinline: true, dnt: true
+    id: card.dataset.vimeo, background: true, muted: true, dnt: true
   });
   card._player = player;
-  player.ready().then(() => {
-    card.classList.add("ready");           // revela o player (capa some) assim que estiver pronto
-    return player.setCurrentTime(start);
+  card._ready = player.ready();
+  card._ready.then(() => {
+    card.classList.add("ready");                 // revela o player (capa some)
+    player.setMuted(true).catch(() => {});
+    player.setCurrentTime(start).catch(() => {});
+    player.pause().catch(() => {});              // em repouso fica parado no frame inicial
   }).catch(() => {});
   player.on("timeupdate", (d) => {
     if (d.seconds >= start + PREVIEW_SECONDS) player.setCurrentTime(start).catch(() => {});
@@ -97,13 +119,19 @@ function makeCard(p) {
     const start = Number(card.dataset.start) || 0;
     const pl = card._player;
     if (!pl) return;
-    pl.ready().then(() => pl.setCurrentTime(start)).then(() => pl.play()).catch(() => {});
+    (card._ready || Promise.resolve()).then(() => {
+      pl.setCurrentTime(start).catch(() => {});
+      pl.play().catch(() => {});
+    });
   });
   card.addEventListener("mouseleave", () => {
     const start = Number(card.dataset.start) || 0;
     const pl = card._player;
     if (!pl) return;
-    pl.ready().then(() => pl.pause()).then(() => pl.setCurrentTime(start)).catch(() => {});
+    (card._ready || Promise.resolve()).then(() => {
+      pl.pause().catch(() => {});
+      pl.setCurrentTime(start).catch(() => {});
+    });
   });
   card.addEventListener("click", () => { window.location.href = "project.html?id=" + encodeURIComponent(p.slug); });
   return card;
@@ -116,20 +144,55 @@ function renderGrid(grid, projects, filter) {
     .forEach(p => { const c = makeCard(p); grid.appendChild(c); observer.observe(c); });
 }
 
-// ---- Página de projeto ----
+// ---- Página de projeto (construtor de blocos) ----
+function md(s) { return s ? (window.marked ? window.marked.parse(s) : `<p>${s}</p>`) : ""; }
+function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+function videoEmbed(id, gif) {
+  if (!id) return "";
+  const src = gif
+    ? `https://player.vimeo.com/video/${id}?background=1&muted=1&loop=1&autoplay=1&dnt=1`
+    : `https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0&dnt=1`;
+  return `<div class="ratio"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+}
+function imgEmbed(src) { return src ? `<img class="b-img" src="${src}" loading="lazy" alt="" />` : ""; }
+function mediaEmbed(b) { return b.mediaType === "imagem" ? imgEmbed(b.image) : videoEmbed(b.vimeo, b.gif !== false); }
+
+function renderBlock(b) {
+  switch (b.type) {
+    case "heading": return `<h2 class="b-heading">${esc(b.text)}</h2>`;
+    case "text": return `<div class="b-text">${md(b.body)}</div>`;
+    case "text_media": {
+      const txt = `<div class="b-tm-text">${md(b.body)}</div>`;
+      const media = `<div class="b-tm-media">${mediaEmbed(b)}</div>`;
+      const cls = b.side === "esquerda" ? "media-left" : "media-right";
+      return `<div class="b-textmedia ${cls}">${txt}${media}</div>`;
+    }
+    case "video": return `<div class="b-video">${videoEmbed(b.vimeo, !!b.gif)}</div>`;
+    case "gallery": {
+      const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
+      const items = (b.items || []).map(it =>
+        `<div class="g-item">${it.mediaType === "imagem" ? imgEmbed(it.image) : videoEmbed(it.vimeo, true)}</div>`).join("");
+      return `<div class="b-gallery" style="grid-template-columns:repeat(${cols},1fr)">${items}</div>`;
+    }
+    case "image": return `<div class="b-image ${b.full ? "full" : ""}">${imgEmbed(b.image)}</div>`;
+    default: return "";
+  }
+}
+
 function renderProject(projects) {
   const wrap = document.querySelector("[data-project]");
   const id = new URLSearchParams(location.search).get("id");
   const p = projects.find(x => x.slug === id) || projects[0];
   if (!p) { wrap.innerHTML = "<p>Projeto não encontrado.</p>"; return; }
   document.title = p.title + " | Julia Milreu";
-  const desc = p.description ? (window.marked ? window.marked.parse(p.description) : `<p>${p.description}</p>`) : "";
+  const blocks = (p.blocks && p.blocks.length)
+    ? p.blocks.map(renderBlock).join("")
+    : `<div class="b-video">${videoEmbed(p.vimeo, false)}</div>`;
   wrap.innerHTML =
     `<a class="back" href="work.html">← VOLTAR</a>
-     <h1>${p.title}</h1>
-     <div class="cat">${p.category || ""}</div>
-     <div class="video"><iframe src="https://player.vimeo.com/video/${p.vimeo}?title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-     <div class="desc">${desc}</div>`;
+     <h1>${esc(p.title)}</h1>
+     <div class="cat">${esc(p.category || "")}</div>
+     <div class="blocks">${blocks}</div>`;
 }
 
 async function init() {

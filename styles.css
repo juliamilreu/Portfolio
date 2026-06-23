@@ -62,6 +62,17 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
   cursor: pointer; border: 1px solid rgba(54,48,51,0.22);
 }
 .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.reel-holder, .reel-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.reel-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 76px; height: 76px; border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center;
+  transition: transform .15s;
+}
+.reel-play:hover { transform: translate(-50%, -50%) scale(1.06); }
+.reel-play svg { width: 30px; height: 30px; margin-left: 4px; fill: var(--primary); }
+.reel.playing .reel-cover, .reel.playing .reel-play { display: none; }
 
 /* Section title */
 .section-head { padding: 18px 0 22px; }
@@ -123,10 +134,29 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .project .back { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 15px; letter-spacing: .04em; margin-bottom: 26px; }
 .project h1 { font-size: 44px; font-weight: 700; margin-bottom: 8px; }
 .project .cat { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; margin-bottom: 26px; }
-.project .video { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: #000; margin-bottom: 32px; }
-.project .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.project .desc { font-size: 20px; line-height: 1.6; }
-.project .desc p { margin-bottom: 16px; }
+/* Blocos da página de projeto */
+.blocks { margin-top: 6px; }
+.b-heading, .b-text, .b-textmedia, .b-video, .b-gallery, .b-image { margin-bottom: 40px; }
+.ratio { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: #000; }
+.ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.b-heading { font-family: "Encode Sans Semi Expanded", sans-serif; font-size: 34px; font-weight: 900; font-style: italic; margin-top: 12px; }
+.b-text { font-size: 19px; line-height: 1.65; }
+.b-text p { margin-bottom: 14px; }
+.b-text strong { font-weight: 700; }
+.b-textmedia { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: center; }
+.b-textmedia.media-left .b-tm-text { order: 2; }
+.b-textmedia.media-left .b-tm-media { order: 1; }
+.b-tm-text { font-size: 18px; line-height: 1.6; }
+.b-tm-text p { margin-bottom: 12px; }
+.b-gallery { display: grid; gap: 14px; }
+.b-gallery .ratio { border-radius: 12px; }
+.b-img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+.b-image.full .b-img { border-radius: 0; }
+@media (max-width: 720px) {
+  .b-textmedia { grid-template-columns: 1fr; gap: 18px; }
+  .b-textmedia.media-left .b-tm-text { order: 0; }
+  .b-textmedia.media-left .b-tm-media { order: 0; }
+}
 
 /* About */
 .about { padding: 40px 0 90px; max-width: 760px; }

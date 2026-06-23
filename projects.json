@@ -8,7 +8,7 @@
       "category": "Motion",
       "featured": true,
       "thumb": "https://i.vimeocdn.com/video/2167289991-6734bcc6e103440ec237269a6fff3ad2da44d89eb4cfa12b94aab1a49238759d-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "ags-la-2026-walk-up-alt",
@@ -18,7 +18,7 @@
       "category": "Motion",
       "featured": true,
       "thumb": "https://i.vimeocdn.com/video/2167289299-bb7e69fa29814fdf9e61bcd1ae15a80d06e8ba1e5f4a0491afe3e9492d3bbf6d-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "knowledge-propaga-o",
@@ -28,7 +28,7 @@
       "category": "Motion",
       "featured": true,
       "thumb": "https://i.vimeocdn.com/video/2057102730-ef59ce71187362bb31304e2b247d4172a346c2ea7e428f945abb700c650b69ec-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "around-the-world-versus",
@@ -38,7 +38,7 @@
       "category": "Motion",
       "featured": true,
       "thumb": "https://i.vimeocdn.com/video/2057102640-0a0d3ed4f5fe027d6fcff318d9536d727cb8a7fe3c3508280016f83ad6e7fb56-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "stuck-in-line",
@@ -48,7 +48,7 @@
       "category": "Motion",
       "featured": true,
       "thumb": "https://i.vimeocdn.com/video/2057102594-0b24e15a20272786a6be14f23d07b37a3dfbf10decb64df7ad1831d96f5d51a8-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "save-the-flame",
@@ -58,7 +58,7 @@
       "category": "Motion",
       "featured": true,
       "thumb": "https://i.vimeocdn.com/video/2057102547-598a3833ecf5c6d50533b4b8311b7009eff0b83c5218453642440c84c6c19886-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "only-a-genius",
@@ -68,7 +68,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/2167268779-7a9488973a5419e3b54ebecf9eefc71578639a9b6ae28fbd045b4c3fa66db52e-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "hashtag-versus",
@@ -78,7 +78,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/2057102439-eb440493c4873ee745b869b6f78754e1a5b744553c83c6a8e736ce0ffc782345-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "app-preview",
@@ -88,7 +88,37 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/2057085764-1e09d17fe01a2764efb76a5ade2b44fd1b9a29d1c6029a84e8d4ad30e060aed5-d_640?region=us",
-      "description": ""
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "App Preview"
+        },
+        {
+          "type": "text",
+          "body": "Card Guardians needed an engaging App Preview video to boost performance in paid ad campaigns. The goal was to increase CTR (clickthrough rate).\n\n**The Approach**\n\nTo stand out in crowded mobile game ads, the focus was combining authentic gameplay with cinematic visual effects — fast-paced editing, dynamic camera cuts, and synchronized VFX/SFX.\n\n**The Result**\n\nThe final motion was designed in multiple formats (vertical, horizontal and square), all under 30 seconds."
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "items": [
+            {
+              "mediaType": "video",
+              "vimeo": "719671885",
+              "image": ""
+            },
+            {
+              "mediaType": "video",
+              "vimeo": "719665072",
+              "image": ""
+            },
+            {
+              "mediaType": "video",
+              "vimeo": "719664242",
+              "image": ""
+            }
+          ]
+        }
+      ]
     },
     {
       "slug": "stop-word-duel",
@@ -98,7 +128,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449846176-d0665577ea92f8d85d32c024aa2a53bfd7ddca374fa7f475a94a60d3a5d65694-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "word-lanes-easter-eggs",
@@ -108,7 +138,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449839072-b1f6c3e11b90d964a8dadec4e0dc352d299850eac65f272341fa890b37f589fb-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "word-lanes-building-landscapes",
@@ -118,7 +148,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449826937-e9daa21191eff8f84cdc41a6cada3430cc0c9532f7db12b47f6990e51bd198d9-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "codycross-halloween-candies",
@@ -128,7 +158,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449840653-279f2ed4bb2b6f0a2335ac021b1dd5111911ab33e8e97e8885aa8efaecab9dcb-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "codycross-cody-quest",
@@ -138,7 +168,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449840144-ef294bfa642af602ca49f51b3df83aa2e0085610a23c57af9b6402befd520459-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "codycross-world-rank",
@@ -148,7 +178,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449826425-f4b620e66a05fa901acc644e8a1baefe36b4bb50ba23c1a6257500392cff8aaa-d_640?region=us",
-      "description": ""
+      "blocks": []
     },
     {
       "slug": "stop-type-design",
@@ -158,7 +188,7 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1444233339-4e1a7e972b5d944df3e86e4e3676ff89cd456a1a233ccd5dc87818dfc7c93365-d_640?region=us",
-      "description": ""
+      "blocks": []
     }
   ]
 }

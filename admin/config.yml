@@ -52,7 +52,59 @@ collections:
               - { label: "Categoria", name: "category", widget: "select", options: ["Motion", "Video Edition", "Graphic Design"] }
               - { label: "Destaque na home (featured)", name: "featured", widget: "boolean", default: false, hint: "Ligado = aparece na página inicial (até 6). Sempre aparece na página WORK." }
               - { label: "Capa (URL da imagem)", name: "thumb", widget: "string", required: false, hint: "Deixe em branco para usar a capa automática do Vimeo." }
-              - { label: "Conteúdo da página do projeto", name: "description", widget: "markdown", required: false, hint: "Texto/descrição que aparece na página individual do projeto." }
+              - label: "Página do projeto (blocos)"
+                name: "blocks"
+                widget: "list"
+                required: false
+                label_singular: "Bloco"
+                summary: "{{fields.type}}"
+                hint: "Monte a página do projeto na ordem que quiser. Adicione blocos e arraste para reordenar."
+                types:
+                  - label: "Título de seção"
+                    name: "heading"
+                    widget: object
+                    fields:
+                      - { label: "Texto", name: "text", widget: "string" }
+                  - label: "Texto"
+                    name: "text"
+                    widget: object
+                    fields:
+                      - { label: "Conteúdo", name: "body", widget: "markdown" }
+                  - label: "Texto + mídia (lado a lado)"
+                    name: "text_media"
+                    widget: object
+                    fields:
+                      - { label: "Texto", name: "body", widget: "markdown" }
+                      - { label: "Lado da mídia", name: "side", widget: "select", options: ["direita", "esquerda"], default: "direita" }
+                      - { label: "Tipo de mídia", name: "mediaType", widget: "select", options: ["video", "imagem"], default: "video" }
+                      - { label: "ID do vídeo (Vimeo)", name: "vimeo", widget: "string", required: false }
+                      - { label: "Vídeo mudo em loop (estilo gif)", name: "gif", widget: "boolean", default: true, required: false }
+                      - { label: "Imagem", name: "image", widget: "image", required: false }
+                  - label: "Vídeo (largura total)"
+                    name: "video"
+                    widget: object
+                    fields:
+                      - { label: "ID do vídeo (Vimeo)", name: "vimeo", widget: "string" }
+                      - { label: "Mudo em loop (estilo gif)", name: "gif", widget: "boolean", default: false, required: false }
+                  - label: "Galeria (vídeos/imagens lado a lado)"
+                    name: "gallery"
+                    widget: object
+                    fields:
+                      - { label: "Colunas", name: "columns", widget: "number", default: 3, min: 1, max: 4, value_type: "int" }
+                      - label: "Itens"
+                        name: "items"
+                        widget: "list"
+                        label_singular: "Item"
+                        fields:
+                          - { label: "Tipo", name: "mediaType", widget: "select", options: ["video", "imagem"], default: "video" }
+                          - { label: "ID do vídeo (Vimeo)", name: "vimeo", widget: "string", required: false }
+                          - { label: "Imagem / GIF", name: "image", widget: "image", required: false }
+                  - label: "Imagem"
+                    name: "image"
+                    widget: object
+                    fields:
+                      - { label: "Imagem", name: "image", widget: "image" }
+                      - { label: "Largura total", name: "full", widget: "boolean", default: false, required: false }
 
   # --- Textos do site ---
   - name: "config"
@@ -67,7 +119,8 @@ collections:
           - { label: "Saudação (ex.: HI!)", name: "heroGreeting", widget: "string" }
           - { label: "Texto de apresentação", name: "hero", widget: "text" }
           - { label: "Frase em destaque", name: "heroEmphasis", widget: "string" }
-          - { label: "Vídeo Reel (ID do Vimeo)", name: "reel", widget: "string", required: false, hint: "ID do vídeo principal (motion reel) que aparece no topo da home." }
+          - { label: "Vídeo Reel (ID do Vimeo)", name: "reel", widget: "string", required: false, hint: "ID do vídeo principal (motion reel) que aparece no topo da home. Ex.: em vimeo.com/1117223701 o ID é 1117223701." }
+          - { label: "Capa do Reel (imagem)", name: "reelCover", widget: "image", required: false, hint: "Imagem de capa do reel (aparece antes de dar play, no lugar da barra do Vimeo). Vazio = usa a capa automática do Vimeo." }
           - { label: "Sobre (página About)", name: "about", widget: "text" }
           - { label: "E-mail", name: "email", widget: "string" }
           - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
