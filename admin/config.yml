@@ -116,6 +116,7 @@ collections:
         fields:
           - { label: "Nome", name: "name", widget: "string" }
           - { label: "Logo (imagem do nome)", name: "logo", widget: "image", required: false, hint: "Suba o logo do seu nome (SVG ou PNG transparente). Substitui o nome em texto no topo. Vazio = usa o texto." }
+          - { label: "Logo do rodapé", name: "footerLogo", widget: "image", required: false, hint: "Logo que aparece no rodapé, acima do e-mail. Use uma versão clara/branca (o fundo do rodapé é coral). Vazio = usa o nome em texto." }
           - { label: "Saudação (ex.: HI!)", name: "heroGreeting", widget: "string" }
           - { label: "Texto de apresentação", name: "hero", widget: "text" }
           - { label: "Frase em destaque", name: "heroEmphasis", widget: "string" }

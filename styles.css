@@ -38,7 +38,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .nav-links a:hover { color: var(--primary); }
 
 /* Asterisco */
-.asterisk { width: 108px; height: 108px; flex: none; }
+.asterisk { width: 54px; height: 54px; flex: none; }
 .asterisk img, .asterisk svg {
   width: 100%; height: 100%; display: block;
   transform-origin: 50% 50%;
@@ -51,7 +51,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; padding: 24px 0 64px; align-items: start; }
 .hero-left { max-width: 560px; }
 .hero-greeting { display: flex; align-items: center; gap: 10px; margin: 0 0 22px -14px; }
-.hero-greeting h1 { font-family: "Encode Sans Semi Expanded", sans-serif; font-size: 52.7px; font-weight: 900; font-style: italic; color: var(--dark); line-height: 1; }
+.hero-greeting h1 { font-family: "Encode Sans Semi Expanded", sans-serif; font-size: 42.2px; font-weight: 900; font-style: italic; color: var(--dark); line-height: 1; }
 .hero-body { font-size: 23px; line-height: 1.45; font-weight: 400; }
 .hero-body .emph { font-weight: 600; display: block; margin-top: 14px; }
 
@@ -180,6 +180,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 footer.site { background: var(--primary); color: var(--white); padding: 50px 0 56px; margin-top: 10px; }
 footer .inner { text-align: center; }
 footer .fname { font-weight: 700; font-size: 26px; margin-bottom: 14px; }
+footer .footer-logo { height: 48px; width: auto; display: inline-block; }
 footer .femail { display: inline-block; font-size: 21px; margin-bottom: 22px; color: var(--white); }
 footer .social { display: flex; justify-content: center; gap: 18px; }
 footer .social a {

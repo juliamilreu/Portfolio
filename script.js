@@ -25,6 +25,10 @@ function fillCommon(site) {
   const brandEl = document.querySelector("[data-brand]");
   if (brandEl && site.logo) brandEl.innerHTML = `<img class="brand-logo" src="${site.logo}" alt="${site.name || ''}">`;
   setText("[data-footer-name]", site.name);
+  const footerName = document.querySelector("[data-footer-name]");
+  if (footerName && site.footerLogo) {
+    footerName.innerHTML = `<img class="footer-logo" src="${site.footerLogo}" alt="${esc(site.name || "")}" />`;
+  }
   setText("[data-hero-greeting]", site.heroGreeting);
   setText("[data-hero]", site.hero);
   setText("[data-hero-emph]", site.heroEmphasis);
