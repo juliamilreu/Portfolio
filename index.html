@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MOTION | Julia Milreu</title>
+  <meta name="description" content="Julia Milreu — Motion Designer. Mobile games, global events, social media and everything in between." />
+  <meta property="og:title" content="MOTION | Julia Milreu" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" data-brand>julia milreu</a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">MOTION</a>
+        <a href="about.html">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div class="kicker" data-tagline>MOTION</div>
+      <h1 data-hero>Hi! I'm a Motion Designer who's been making things move since 2014.</h1>
+    </section>
+
+    <section class="wrap">
+      <div class="filters" data-filters></div>
+      <div class="grid" data-grid>
+        <div class="loading">Carregando projetos…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="name" data-footer-name>julia milreu</div>
+      <a class="email" href="mailto:juliamilreu@gmail.com" data-email>juliamilreu@gmail.com</a>
+      <div class="social" data-social></div>
+    </div>
+  </footer>
+
+  <div class="lightbox" data-lightbox>
+    <button class="close" data-close aria-label="Fechar">&times;</button>
+    <div class="frame"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- Netlify Identity: redireciona para o painel após o convite/login -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

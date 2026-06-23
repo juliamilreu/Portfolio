@@ -1,0 +1,49 @@
+# Configuração do painel visual (Decap CMS).
+# O backend git-gateway conecta com o Netlify Identity depois que o site é publicado.
+backend:
+  name: git-gateway
+  branch: main
+
+# Idioma do painel
+locale: pt
+
+media_folder: "uploads"        # onde imagens enviadas ficam salvas
+public_folder: "/uploads"
+
+collections:
+  # --- Projetos do portfólio ---
+  - name: "portfolio"
+    label: "Portfólio"
+    files:
+      - name: "projects"
+        label: "Projetos"
+        file: "projects.json"
+        description: "Adicione, edite, reordene ou remova os vídeos do portfólio."
+        fields:
+          - label: "Projetos"
+            name: "projects"
+            widget: "list"
+            label_singular: "Projeto"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "ID do vídeo no Vimeo", name: "vimeo", widget: "string", hint: "Só o número. Ex.: em vimeo.com/719671885 o ID é 719671885" }
+              - { label: "Categoria", name: "category", widget: "select", required: false, options: ["Mobile Games", "Eventos", "Social"] }
+              - { label: "Capa (URL da imagem)", name: "thumb", widget: "string", required: false, hint: "Deixe em branco para usar a capa automática do Vimeo" }
+
+  # --- Textos do site ---
+  - name: "config"
+    label: "Configurações do site"
+    files:
+      - name: "site"
+        label: "Textos e contato"
+        file: "site.json"
+        fields:
+          - { label: "Nome", name: "name", widget: "string" }
+          - { label: "Título (kicker)", name: "tagline", widget: "string" }
+          - { label: "Texto do topo (hero)", name: "hero", widget: "text" }
+          - { label: "Sobre", name: "about", widget: "text" }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+          - { label: "Behance", name: "behance", widget: "string", required: false }
+          - { label: "Dribbble", name: "dribbble", widget: "string", required: false }
