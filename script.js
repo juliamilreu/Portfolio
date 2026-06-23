@@ -71,7 +71,10 @@ function ensurePlayer(card) {
     autopause: false, playsinline: true, dnt: true
   });
   card._player = player;
-  player.ready().then(() => player.setCurrentTime(start)).then(() => card.classList.add("ready")).catch(() => {});
+  player.ready().then(() => {
+    card.classList.add("ready");           // revela o player (capa some) assim que estiver pronto
+    return player.setCurrentTime(start);
+  }).catch(() => {});
   player.on("timeupdate", (d) => {
     if (d.seconds >= start + PREVIEW_SECONDS) player.setCurrentTime(start).catch(() => {});
   });
@@ -93,12 +96,14 @@ function makeCard(p) {
     ensurePlayer(card);
     const start = Number(card.dataset.start) || 0;
     const pl = card._player;
-    if (pl) pl.setCurrentTime(start).then(() => pl.play()).catch(() => {});
+    if (!pl) return;
+    pl.ready().then(() => pl.setCurrentTime(start)).then(() => pl.play()).catch(() => {});
   });
   card.addEventListener("mouseleave", () => {
     const start = Number(card.dataset.start) || 0;
     const pl = card._player;
-    if (pl) pl.pause().then(() => pl.setCurrentTime(start)).catch(() => {});
+    if (!pl) return;
+    pl.ready().then(() => pl.pause()).then(() => pl.setCurrentTime(start)).catch(() => {});
   });
   card.addEventListener("click", () => { window.location.href = "project.html?id=" + encodeURIComponent(p.slug); });
   return card;
