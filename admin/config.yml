@@ -121,7 +121,8 @@ collections:
           - { label: "Frase em destaque", name: "heroEmphasis", widget: "string" }
           - { label: "Vídeo Reel (ID do Vimeo)", name: "reel", widget: "string", required: false, hint: "ID do vídeo principal (motion reel) que aparece no topo da home. Ex.: em vimeo.com/1117223701 o ID é 1117223701." }
           - { label: "Capa do Reel (imagem)", name: "reelCover", widget: "image", required: false, hint: "Imagem de capa do reel (aparece antes de dar play, no lugar da barra do Vimeo). Vazio = usa a capa automática do Vimeo." }
-          - { label: "Sobre (página About)", name: "about", widget: "text" }
+          - { label: "Foto da página About", name: "aboutPhoto", widget: "image", required: false, hint: "Sua foto que aparece ao lado do texto na página About." }
+          - { label: "Sobre (página About)", name: "about", widget: "text", hint: "Separe os parágrafos com uma linha em branco." }
           - { label: "E-mail", name: "email", widget: "string" }
           - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
           - { label: "Behance", name: "behance", widget: "string", required: false }

@@ -28,7 +28,18 @@ function fillCommon(site) {
   setText("[data-hero-greeting]", site.heroGreeting);
   setText("[data-hero]", site.hero);
   setText("[data-hero-emph]", site.heroEmphasis);
-  setText("[data-about]", site.about);
+
+  // Página About: bio em parágrafos + foto
+  const aboutBody = document.querySelector("[data-about]");
+  if (aboutBody && site.about) {
+    aboutBody.innerHTML = site.about.split(/\n\s*\n/).map(t => `<p>${esc(t.trim())}</p>`).join("");
+  }
+  const aboutPhoto = document.querySelector("[data-about-photo]");
+  if (aboutPhoto) {
+    aboutPhoto.innerHTML = site.aboutPhoto
+      ? `<img src="${site.aboutPhoto}" alt="${esc(site.name || "")}" />`
+      : `<div class="photo-ph">Sua foto aqui</div>`;
+  }
 
   document.querySelectorAll("[data-email]").forEach(n => {
     if (site.email) { n.textContent = site.email; n.href = "mailto:" + site.email; }
