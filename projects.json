@@ -15,18 +15,37 @@
           "subtitle": "Event Motion Design",
           "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
           "client": "App Growth Summit"
+        },
+        {
+          "type": "video",
+          "gif": false,
+          "vimeo": "1200250328"
+        },
+        {
+          "type": "text",
+          "body": "A 7-second walk-up graphic played on venue screens to open each session.\n\nBuilt around LA's visual identity, it set the tone before speakers reached the stage, giving the event a polished, city-native feel that elevated the production value."
+        },
+        {
+          "type": "divider",
+          "width": "curta"
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "items": [
+            {
+              "mediaType": "imagem",
+              "image": "/uploads/10587c_e6f034a9f1c94db8a085fc6c8bc21675~mv2.gif",
+              "title": "New York"
+            },
+            {
+              "mediaType": "imagem",
+              "title": "Tokyo",
+              "image": "/uploads/10587c_7ae5dfd78b8141e0841e73f96dddb1d9~mv2.gif"
+            }
+          ]
         }
       ]
-    },
-    {
-      "slug": "ags-la-2026-walk-up-alt",
-      "title": "AGS LA 2026 — Walk-Up (alt)",
-      "vimeo": "1200249766",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2167289299-bb7e69fa29814fdf9e61bcd1ae15a80d06e8ba1e5f4a0491afe3e9492d3bbf6d-d_640?region=us",
-      "blocks": []
     },
     {
       "slug": "knowledge-propaga-o",
@@ -139,16 +158,6 @@
       "blocks": []
     },
     {
-      "slug": "word-lanes-easter-eggs",
-      "title": "Word Lanes — Easter Eggs",
-      "vimeo": "719665072",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449839072-b1f6c3e11b90d964a8dadec4e0dc352d299850eac65f272341fa890b37f589fb-d_640?region=us",
-      "blocks": []
-    },
-    {
       "slug": "word-lanes-building-landscapes",
       "title": "Word Lanes — Building Landscapes",
       "vimeo": "719664242",
@@ -156,16 +165,6 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449826937-e9daa21191eff8f84cdc41a6cada3430cc0c9532f7db12b47f6990e51bd198d9-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "codycross-halloween-candies",
-      "title": "CodyCross — Halloween Candies",
-      "vimeo": "719664215",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449840653-279f2ed4bb2b6f0a2335ac021b1dd5111911ab33e8e97e8885aa8efaecab9dcb-d_640?region=us",
       "blocks": []
     },
     {
@@ -186,16 +185,6 @@
       "category": "Motion",
       "featured": false,
       "thumb": "https://i.vimeocdn.com/video/1449826425-f4b620e66a05fa901acc644e8a1baefe36b4bb50ba23c1a6257500392cff8aaa-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "stop-type-design",
-      "title": "Stop — Type Design",
-      "vimeo": "716752774",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1444233339-4e1a7e972b5d944df3e86e4e3676ff89cd456a1a233ccd5dc87818dfc7c93365-d_640?region=us",
       "blocks": []
     }
   ]
