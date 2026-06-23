@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOTION | Julia Milreu</title>
-  <meta name="description" content="Julia Milreu — Motion Designer. Mobile games, global events, social media and everything in between." />
-  <meta property="og:title" content="MOTION | Julia Milreu" />
-  <meta property="og:type" content="website" />
+  <meta name="description" content="Julia Milreu — Motion Designer. Advertising, SaaS, mobile games, global events, social media and everything in between." />
+  <meta property="og:title" content="Julia Milreu — Motion Designer" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@600;700&family=Encode+Sans+Semi+Condensed:wght@400;500;600;700&family=Encode+Sans+Semi+Expanded:wght@800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,30 +16,41 @@
     <div class="wrap nav">
       <a class="brand" href="index.html" data-brand>julia milreu</a>
       <nav class="nav-links">
-        <a href="index.html" class="active">MOTION</a>
-        <a href="about.html">ABOUT</a>
+        <a href="index.html" class="active">HOME</a>
+        <a href="work.html">WORK</a>
+        <a href="about.html">ABOUT ME</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="wrap hero">
-      <div class="kicker" data-tagline>MOTION</div>
-      <h1 data-hero>Hi! I'm a Motion Designer who's been making things move since 2014.</h1>
+      <div class="hero-left">
+        <div class="hero-greeting">
+          <span class="asterisk"><img src="star.svg" alt="" /></span>
+          <h1 data-hero-greeting>HI!</h1>
+        </div>
+        <p class="hero-body">
+          <span data-hero>I'm a Motion Designer who's been making things move since 2014.</span>
+          <span class="emph" data-hero-emph>Let's make something worth watching!</span>
+        </p>
+      </div>
+      <div class="reel" data-reel>
+        <div class="loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;">Reel</div>
+      </div>
     </section>
 
     <section class="wrap">
-      <div class="filters" data-filters></div>
-      <div class="grid" data-grid>
+      <div class="grid" data-grid data-mode="featured">
         <div class="loading">Carregando projetos…</div>
       </div>
     </section>
   </main>
 
   <footer class="site">
-    <div class="wrap">
-      <div class="name" data-footer-name>julia milreu</div>
-      <a class="email" href="mailto:juliamilreu@gmail.com" data-email>juliamilreu@gmail.com</a>
+    <div class="wrap inner">
+      <div class="fname" data-footer-name>julia milreu</div>
+      <a class="femail" href="mailto:juliamilreu@gmail.com" data-email>juliamilreu@gmail.com</a>
       <div class="social" data-social></div>
     </div>
   </footer>
@@ -50,6 +60,7 @@
     <div class="frame"></div>
   </div>
 
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

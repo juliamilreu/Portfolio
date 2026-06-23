@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ABOUT ME | Julia Milreu</title>
+  <title>WORK | Julia Milreu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@600;700&family=Encode+Sans+Semi+Condensed:wght@400;500;600;700&family=Encode+Sans+Semi+Expanded:wght@800;900&display=swap" rel="stylesheet" />
@@ -15,17 +15,21 @@
       <a class="brand" href="index.html" data-brand>julia milreu</a>
       <nav class="nav-links">
         <a href="index.html">HOME</a>
-        <a href="work.html">WORK</a>
-        <a href="about.html" class="active">ABOUT ME</a>
+        <a href="work.html" class="active">WORK</a>
+        <a href="about.html">ABOUT ME</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="wrap about">
-      <span class="asterisk"><img src="star.svg" alt="" /></span>
-      <h2>HI!</h2>
-      <p data-about>Loading…</p>
+    <section class="wrap">
+      <div class="work-top">
+        <span class="asterisk"><img src="star.svg" alt="" /></span>
+        <div class="filters" data-filters></div>
+      </div>
+      <div class="grid" data-grid data-mode="all">
+        <div class="loading">Carregando projetos…</div>
+      </div>
     </section>
   </main>
 
@@ -37,6 +41,12 @@
     </div>
   </footer>
 
+  <div class="lightbox" data-lightbox>
+    <button class="close" data-close aria-label="Fechar">&times;</button>
+    <div class="frame"></div>
+  </div>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
