@@ -23,7 +23,24 @@ function fillCommon(site) {
   const setText = (sel, val) => { const n = document.querySelector(sel); if (n && val != null) n.textContent = val; };
   setText("[data-brand]", site.name);
   const brandEl = document.querySelector("[data-brand]");
-  if (brandEl && site.logo) brandEl.innerHTML = `<img class="brand-logo" src="${site.logo}" alt="${site.name || ''}">`;
+  if (brandEl && site.logo) {
+    if (/\.json(\?.*)?$/i.test(site.logo)) {
+      // Logo animado (Lottie)
+      brandEl.innerHTML = `<span class="brand-logo brand-logo-lottie" role="img" aria-label="${esc(site.name || "")}"></span>`;
+      const holder = brandEl.querySelector(".brand-logo-lottie");
+      if (holder && window.lottie) {
+        lottie.loadAnimation({
+          container: holder,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: site.logo
+        });
+      }
+    } else {
+      brandEl.innerHTML = `<img class="brand-logo" src="${site.logo}" alt="${esc(site.name || "")}">`;
+    }
+  }
   setText("[data-footer-name]", site.name);
   const footerName = document.querySelector("[data-footer-name]");
   if (footerName && site.footerLogo) {

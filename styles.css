@@ -28,6 +28,8 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 92px; }
 .brand { font-size: 30px; font-weight: 600; color: var(--primary); letter-spacing: 0; }
 .brand-logo { height: 30px; width: auto; display: block; }
+.brand-logo-lottie { height: 30px; width: 138px; } /* proporção 2300x500 do logo.json */
+.brand-logo-lottie svg { display: block; }
 .nav-links { display: flex; gap: 38px; }
 .nav-links a {
   font-family: "Encode Sans Condensed", sans-serif;
