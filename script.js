@@ -244,7 +244,7 @@ function renderBlock(b) {
         const title = it.title ? `<div class="g-title">${esc(it.title)}</div>` : "";
         return `<div class="g-item">${title}${media}</div>`;
       }).join("");
-      return `<div class="b-gallery" style="grid-template-columns:repeat(${cols},1fr)">${items}</div>`;
+      return `<div class="b-gallery" style="--cols:${cols}">${items}</div>`;
     }
     case "image": return `<div class="b-image ${b.full ? "full" : ""}">${imgEmbed(b.image)}</div>`;
     default: return "";
