@@ -40,7 +40,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .nav-links a:hover { color: var(--primary); }
 
 /* Hero (home) */
-.hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; padding: 24px 0 64px; align-items: start; }
+.hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; padding: 74px 0 64px; align-items: start; }
 .hero-left { max-width: 560px; }
 .hero-greeting { display: flex; align-items: center; gap: 10px; margin: 0 0 22px 0; }
 .hero-greeting h1 { font-family: "Encode Sans Semi Expanded", sans-serif; font-size: 25.32px; font-weight: 900; font-style: italic; color: var(--dark); line-height: 1; }
