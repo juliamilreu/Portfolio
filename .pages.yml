@@ -205,3 +205,18 @@ content:
       - { name: linkedin, label: "LinkedIn", type: string }
       - { name: behance, label: "Behance", type: string }
       - { name: dribbble, label: "Dribbble", type: string }
+
+  - name: codigo
+    label: "Código do site (avançado)"
+    type: group
+    items:
+      - name: script
+        label: "script.js"
+        type: file
+        path: "script.js"
+        format: code
+      - name: styles
+        label: "styles.css"
+        type: file
+        path: "styles.css"
+        format: code
