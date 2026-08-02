@@ -159,6 +159,10 @@ content:
                         options:
                           values: ["video", "imagem"]
                       - { name: vimeo, label: "ID do vídeo (Vimeo)", type: string }
+                      - name: thumb
+                        label: "Capa do vídeo (opcional)"
+                        type: image
+                        description: "Aparece fixa até o vídeo carregar. Só vale quando o Tipo é 'video'."
                       - { name: image, label: "Imagem / GIF", type: image }
               - name: image
                 label: "Imagem"
