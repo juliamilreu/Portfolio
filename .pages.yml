@@ -112,12 +112,30 @@ content:
                       values: ["video", "imagem"]
                   - { name: vimeo, label: "ID do vídeo (Vimeo)", type: string }
                   - { name: gif, label: "Vídeo mudo em loop (estilo gif)", type: boolean, default: true }
+                  - name: orientation
+                    label: "Orientação do vídeo"
+                    type: select
+                    default: "paisagem"
+                    description: "Use 'Retrato' para vídeos verticais (ex.: preview de app/celular) para não ficarem espremidos."
+                    options:
+                      values:
+                        - { name: paisagem, label: "Paisagem (16:9)" }
+                        - { name: retrato, label: "Retrato / vertical (9:16)" }
                   - { name: image, label: "Imagem", type: image }
               - name: video
                 label: "Vídeo (largura total)"
                 fields:
                   - { name: vimeo, label: "ID do vídeo (Vimeo)", type: string, required: true }
                   - { name: gif, label: "Mudo em loop (estilo gif)", type: boolean, default: false }
+                  - name: orientation
+                    label: "Orientação do vídeo"
+                    type: select
+                    default: "paisagem"
+                    description: "Use 'Retrato' para vídeos verticais (ex.: preview de app/celular) para não ficarem espremidos."
+                    options:
+                      values:
+                        - { name: paisagem, label: "Paisagem (16:9)" }
+                        - { name: retrato, label: "Retrato / vertical (9:16)" }
               - name: gallery
                 label: "Galeria (vídeos/imagens lado a lado)"
                 fields:
