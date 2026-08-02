@@ -27,7 +27,8 @@
           "side": "esquerda",
           "mediaType": "video",
           "vimeo": "1214806463",
-          "gif": false
+          "gif": false,
+          "orientation": "retrato"
         },
         {
           "type": "gallery",
@@ -58,7 +59,8 @@
           "side": "direita",
           "mediaType": "video",
           "vimeo": "1214958416",
-          "gif": false
+          "gif": false,
+          "orientation": "retrato"
         },
         {
           "type": "gallery",
@@ -100,7 +102,8 @@
         {
           "type": "video",
           "vimeo": "1117236976",
-          "gif": false
+          "gif": false,
+          "orientation": "paisagem"
         },
         {
           "type": "text",
