@@ -194,19 +194,23 @@ function renderGrid(grid, projects, filter) {
 // ---- Página de projeto (construtor de blocos) ----
 function md(s) { return s ? (window.marked ? window.marked.parse(s) : `<p>${s}</p>`) : ""; }
 function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
-function videoEmbed(id, gif) {
+function videoEmbed(id, gif, vertical) {
   if (!id) return "";
   const src = gif
     ? `https://player.vimeo.com/video/${id}?background=1&muted=1&loop=1&autoplay=1&dnt=1`
     : `https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0&dnt=1`;
-  return `<div class="ratio"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+  return `<div class="ratio${vertical ? " vertical" : ""}"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
 }
 function imgEmbed(src) { return src ? `<img class="b-img" src="${src}" loading="lazy" alt="" />` : ""; }
-function mediaEmbed(b) { return b.mediaType === "imagem" ? imgEmbed(b.image) : videoEmbed(b.vimeo, b.gif !== false); }
+function mediaEmbed(b) {
+  if (b.mediaType === "imagem") return imgEmbed(b.image);
+  const vertical = b.orientation === "retrato";
+  return b.gif !== false ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical);
+}
 // Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som
-function cleanPlayerHtml(id) {
+function cleanPlayerHtml(id, vertical) {
   if (!id) return "";
-  return `<div class="ratio clean-player" data-vimeo="${id}">
+  return `<div class="ratio clean-player${vertical ? " vertical" : ""}" data-vimeo="${id}">
     <img class="cp-cover" src="https://vumbnail.com/${id}.jpg" alt="" />
     <button class="cp-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
   </div>`;
@@ -253,7 +257,10 @@ function renderBlock(b) {
       const cls = b.side === "esquerda" ? "media-left" : "media-right";
       return `<div class="b-textmedia ${cls}">${txt}${media}</div>`;
     }
-    case "video": return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true) : cleanPlayerHtml(b.vimeo)}</div>`;
+    case "video": {
+      const vertical = b.orientation === "retrato";
+      return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical)}</div>`;
+    }
     case "gallery": {
       const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
       const items = (b.items || []).map(it => {
