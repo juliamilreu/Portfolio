@@ -2,12 +2,13 @@
   "projects": [
     {
       "title": " Card Guardians",
-      "slug": "Creative Ad",
+      "slug": "card-guardians",
       "vimeo": "1214806463",
       "previewFile": "/uploads/CG_Poster_1.mp4",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
+      "thumb": "/uploads/CG_Poster_1_00000.jpg",
       "blocks": [
         {
           "type": "header",
@@ -80,24 +81,6 @@
       ]
     },
     {
-      "title": "AGS LA 2026 — Walk-Up",
-      "slug": "ags-la-2026-walk-up",
-      "vimeo": "1200250328",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2167289991-6734bcc6e103440ec237269a6fff3ad2da44d89eb4cfa12b94aab1a49238759d-d_640?region=us",
-      "blocks": [
-        {
-          "type": "header",
-          "title": "AGS Los Angeles 2026",
-          "subtitle": "Event Motion Design",
-          "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
-          "client": "App Growth Summit"
-        }
-      ]
-    },
-    {
       "title": "Only a Genius",
       "slug": "only-a-genius",
       "vimeo": "1117236976",
@@ -105,7 +88,7 @@
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2167268779-7a9488973a5419e3b54ebecf9eefc71578639a9b6ae28fbd045b4c3fa66db52e-d_640?region=us",
+      "thumb": "/uploads/CG_Poster_1_00000-1.jpg",
       "blocks": [
         {
           "type": "header",
@@ -144,104 +127,22 @@
       ]
     },
     {
-      "title": "AGS LA 2026 — Walk-Up (alt)",
-      "slug": "ags-la-2026-walk-up-alt",
+      "title": "AGS Los Angeles 2026",
+      "slug": "ags-walk-up-videos",
       "vimeo": "1200249766",
+      "previewFile": "/uploads/Only a Genius_POSTER.mp4",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2167289299-bb7e69fa29814fdf9e61bcd1ae15a80d06e8ba1e5f4a0491afe3e9492d3bbf6d-d_640?region=us"
-    },
-    {
-      "title": "Knowledge — Propagação",
-      "slug": "knowledge-propaga-o",
-      "vimeo": "1117237188",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102730-ef59ce71187362bb31304e2b247d4172a346c2ea7e428f945abb700c650b69ec-d_640?region=us"
-    },
-    {
-      "title": "Around the World — Versus",
-      "slug": "around-the-world-versus",
-      "vimeo": "1117237089",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102640-0a0d3ed4f5fe027d6fcff318d9536d727cb8a7fe3c3508280016f83ad6e7fb56-d_640?region=us"
-    },
-    {
-      "title": "Stuck in Line",
-      "slug": "stuck-in-line",
-      "vimeo": "1117237072",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102594-0b24e15a20272786a6be14f23d07b37a3dfbf10decb64df7ad1831d96f5d51a8-d_640?region=us"
-    },
-    {
-      "title": "Save the Flame",
-      "slug": "save-the-flame",
-      "vimeo": "1117237010",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102547-598a3833ecf5c6d50533b4b8311b7009eff0b83c5218453642440c84c6c19886-d_640?region=us"
-    },
-    {
-      "title": "Hashtag Versus",
-      "slug": "hashtag-versus",
-      "vimeo": "1117236909",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/2057102439-eb440493c4873ee745b869b6f78754e1a5b744553c83c6a8e736ce0ffc782345-d_640?region=us"
-    },
-    {
-      "title": "App Preview",
-      "slug": "app-preview",
-      "vimeo": "1117223701",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/2057085764-1e09d17fe01a2764efb76a5ade2b44fd1b9a29d1c6029a84e8d4ad30e060aed5-d_640?region=us",
       "blocks": [
         {
-          "type": "heading",
-          "text": "App Preview"
-        },
-        {
-          "type": "text",
-          "body": "Card Guardians needed an engaging App Preview video to boost performance in paid ad campaigns. The goal was to increase CTR (clickthrough rate).\n\n**The Approach**\n\nTo stand out in crowded mobile game ads, the focus was combining authentic gameplay with cinematic visual effects — fast-paced editing, dynamic camera cuts, and synchronized VFX/SFX.\n\n**The Result**\n\nThe final motion was designed in multiple formats (vertical, horizontal and square), all under 30 seconds."
-        },
-        {
-          "type": "gallery",
-          "columns": 3,
-          "items": [
-            {
-              "mediaType": "video",
-              "vimeo": "719671885"
-            },
-            {
-              "mediaType": "video",
-              "vimeo": "719665072"
-            },
-            {
-              "mediaType": "video",
-              "vimeo": "719664242"
-            }
-          ]
+          "type": "header",
+          "title": "AGS Los Angeles 2026",
+          "subtitle": "Event Motion Design",
+          "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
+          "client": "App Growth Summit"
         }
       ]
-    },
-    {
-      "title": "Stop — Word Duel",
-      "slug": "stop-word-duel",
-      "vimeo": "719671885",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449846176-d0665577ea92f8d85d32c024aa2a53bfd7ddca374fa7f475a94a60d3a5d65694-d_640?region=us"
     }
   ]
 }
