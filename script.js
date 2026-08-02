@@ -202,37 +202,110 @@ function videoEmbed(id, gif, vertical) {
   return `<div class="ratio${vertical ? " vertical" : ""}"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
 }
 function imgEmbed(src) { return src ? `<img class="b-img" src="${src}" loading="lazy" alt="" />` : ""; }
+// Vídeo de galeria com capa opcional: mostra a capa (jpg) até o Vimeo carregar, depois troca sem piscar.
+function galleryVideoEmbed(id, thumb) {
+  if (!id) return "";
+  if (!thumb) return videoEmbed(id, true);
+  return `<div class="ratio gallery-video" data-vimeo="${id}">
+    <img class="gv-cover" src="${thumb}" alt="" />
+  </div>`;
+}
+function setupGalleryPlayers() {
+  document.querySelectorAll(".gallery-video[data-vimeo]").forEach(container => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { mountGalleryPlayer(entry.target); obs.unobserve(entry.target); }
+      });
+    }, { rootMargin: "200px" });
+    obs.observe(container);
+  });
+}
+function mountGalleryPlayer(container) {
+  if (container._player || !window.Vimeo) return;
+  const holder = document.createElement("div");
+  holder.className = "gv-holder";
+  container.appendChild(holder);
+  const player = new Vimeo.Player(holder, {
+    id: container.dataset.vimeo, background: true, muted: true, dnt: true
+  });
+  container._player = player;
+  player.ready().then(() => { container.classList.add("ready"); }).catch(() => {});
+}
 function mediaEmbed(b) {
   if (b.mediaType === "imagem") return imgEmbed(b.image);
   const vertical = b.orientation === "retrato";
   return b.gif !== false ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical);
 }
-// Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som
+// Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som.
+// Depois de dar play, aparecem (só no hover) dois botões pequenos: play/pause e mudo/com som.
 function cleanPlayerHtml(id, vertical) {
   if (!id) return "";
   return `<div class="ratio clean-player${vertical ? " vertical" : ""}" data-vimeo="${id}">
     <img class="cp-cover" src="https://vumbnail.com/${id}.jpg" alt="" />
     <button class="cp-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+    <div class="cp-controls">
+      <button class="cp-toggle" aria-label="Play/Pause">
+        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <button class="cp-mute" aria-label="Mudo/Com som">
+        <svg class="ic-unmuted" viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 12c0-1.77-.77-3.29-2-4.24v8.48c1.23-.95 2-2.47 2-4.24z"/></svg>
+        <svg class="ic-muted" viewBox="0 0 24 24" hidden><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M19.07 4.93l1.41 1.41L18.4 8.4l2.08 2.08-1.41 1.41L17 9.81l-2.07 2.08-1.41-1.41L15.6 8.4l-2.08-2.08 1.41-1.41L17 7l2.07-2.07z"/></svg>
+      </button>
+    </div>
   </div>`;
 }
 function initCleanPlayers() {
   document.querySelectorAll(".clean-player").forEach(cp => {
-    cp.addEventListener("click", () => {
-      if (cp._player) {
-        cp._player.getPaused().then(pp => (pp ? cp._player.play() : cp._player.pause())).catch(() => {});
-        return;
-      }
+    const toggleBtn = cp.querySelector(".cp-toggle");
+    const muteBtn = cp.querySelector(".cp-mute");
+
+    function syncPlayIcon(paused) {
+      if (!toggleBtn) return;
+      toggleBtn.querySelector(".ic-play").hidden = !paused;
+      toggleBtn.querySelector(".ic-pause").hidden = paused;
+    }
+    function syncMuteIcon(muted) {
+      if (!muteBtn) return;
+      muteBtn.querySelector(".ic-unmuted").hidden = muted;
+      muteBtn.querySelector(".ic-muted").hidden = !muted;
+    }
+
+    function startPlayer() {
       if (!window.Vimeo) return;
       cp.classList.add("playing");
       const holder = document.createElement("div");
       holder.className = "cp-holder";
       cp.appendChild(holder);
+      // muted:true garante autoplay confiável nos navegadores; a pessoa liga o som pelo botão.
       cp._player = new Vimeo.Player(holder, {
-        id: cp.dataset.vimeo, autoplay: true, controls: false,
+        id: cp.dataset.vimeo, autoplay: true, muted: true, controls: false,
         title: false, byline: false, portrait: false, dnt: true
       });
       cp._player.play().catch(() => {});
+      syncPlayIcon(false);
+      syncMuteIcon(true);
+      cp._player.on("play", () => syncPlayIcon(false));
+      cp._player.on("pause", () => syncPlayIcon(true));
+      cp._player.on("volumechange", (d) => syncMuteIcon(d.volume === 0));
+    }
+
+    cp.addEventListener("click", (e) => {
+      if (e.target.closest(".cp-mute")) return; // tratado no listener próprio, abaixo
+      if (!cp._player) { startPlayer(); return; }
+      cp._player.getPaused().then(pp => (pp ? cp._player.play() : cp._player.pause())).catch(() => {});
     });
+
+    if (muteBtn) {
+      muteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!cp._player) return;
+        cp._player.getMuted().then(m => {
+          cp._player.setMuted(!m).catch(() => {});
+          syncMuteIcon(!m);
+        }).catch(() => {});
+      });
+    }
   });
 }
 
@@ -264,7 +337,7 @@ function renderBlock(b) {
     case "gallery": {
       const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
       const items = (b.items || []).map(it => {
-        const media = it.mediaType === "imagem" ? imgEmbed(it.image) : videoEmbed(it.vimeo, true);
+        const media = it.mediaType === "imagem" ? imgEmbed(it.image) : galleryVideoEmbed(it.vimeo, it.thumb);
         const title = it.title ? `<div class="g-title">${esc(it.title)}</div>` : "";
         return `<div class="g-item">${title}${media}</div>`;
       }).join("");
@@ -288,6 +361,7 @@ function renderProject(projects) {
     `<a class="back" href="work.html">← VOLTAR</a>
      <div class="blocks">${blocks}</div>`;
   initCleanPlayers();
+  setupGalleryPlayers();
 }
 
 async function init() {

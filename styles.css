@@ -152,6 +152,11 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .cp-play svg { width: 28px; height: 28px; margin-left: 4px; fill: var(--primary); }
 .cp-holder, .cp-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .clean-player.playing .cp-cover, .clean-player.playing .cp-play { display: none; }
+.cp-controls { position: absolute; left: 14px; bottom: 14px; z-index: 4; display: none; gap: 8px; opacity: 0; transition: opacity .2s; }
+.clean-player.playing .cp-controls { display: flex; }
+.clean-player.playing:hover .cp-controls { opacity: 1; }
+.cp-controls button { width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; }
+.cp-controls svg { width: 18px; height: 18px; fill: #fff; }
 .b-heading { font-family: "Encode Sans Semi Expanded", sans-serif; font-size: 34px; font-weight: 900; font-style: italic; margin-top: 12px; }
 .b-text { font-size: 19px; line-height: 1.65; }
 .b-text p { margin-bottom: 14px; }
@@ -164,9 +169,12 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .b-divider { display: flex; justify-content: center; margin: 40px 0; }
 .b-divider hr { border: 0; border-top: 1.5px solid var(--dark); width: 110px; margin: 0; }
 .b-divider.full hr { width: 100%; }
-.b-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.b-gallery .g-item { flex: 0 1 calc((100% - (var(--cols) - 1) * 10px) / var(--cols) - 1px); }
+.b-gallery { display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 40px; justify-content: center; justify-items: center; margin: 0 auto; }
+.b-gallery .g-item { width: 100%; }
 .b-gallery .ratio { border-radius: 15px; }
+.gallery-video .gv-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; transition: opacity .4s ease; }
+.gallery-video.ready .gv-cover { opacity: 0; }
+.gv-holder, .gv-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
 .g-title { font-family: "Encode Sans Condensed", sans-serif; font-weight: 700; font-size: 22px; text-align: center; color: var(--dark); margin-bottom: 14px; }
 .g-item .b-img { border-radius: 15px; }
 .b-img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
@@ -175,6 +183,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
   .b-textmedia { grid-template-columns: 1fr; gap: 18px; }
   .b-textmedia.media-left .b-tm-text { order: 0; }
   .b-textmedia.media-left .b-tm-media { order: 0; }
+  .b-gallery { grid-template-columns: 1fr; gap: 24px; }
 }
 
 /* About */
