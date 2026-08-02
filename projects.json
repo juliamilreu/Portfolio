@@ -1,8 +1,87 @@
 {
   "projects": [
     {
-      "slug": "ags-la-2026-walk-up",
+      "title": " Card Guardians",
+      "slug": "Creative Ad",
+      "vimeo": "1214806463",
+      "previewFile": "/uploads/CG_Poster_1.mp4",
+      "previewStart": 0,
+      "category": "Motion",
+      "featured": true,
+      "blocks": [
+        {
+          "type": "header",
+          "title": "Card Guardians",
+          "subtitle": "Creative Ad",
+          "clientQuote": "\"Welcome to the world of Valentia! Build your deck of cards and prepare for strategic battles against monsters and the Guardians of Chaos.\"",
+          "client": "Tapps"
+        },
+        {
+          "type": "heading",
+          "text": "App Preview"
+        },
+        {
+          "type": "text_media",
+          "body": "Card Guardians needed an engaging App Preview video to boost performance in paid ad campaigns. The goal was increase CTR (clickthrough rate).\n\nThe audience consisted mostly of male players aged 21–34, fans of RPG and strategy mechanics, motivated by mastery, skill improvement, and tactical depth.\n\n​**The Approach**\n\nTo stand out in crowded mobile game ads, the focus was in combining authentic gameplay with cinematic visual effects. The hypothesis was that fast-paced editing, dynamic camera cuts, and synchronized VFX/SFX paired with an epic soundtrack would amplify the excitement and communicate the game’s strategic intensity.​\n\n**The Result**​\n\nThe final motion was designed in multiple formats (vertical, horizontal and square) for Google Ads, Meta Ads and App Stores, all under 30 seconds.  \nEvery element was tuned to capture attention in the first seconds, showcase progression, and convey the game’s epic scale.",
+          "side": "esquerda",
+          "mediaType": "video",
+          "vimeo": "1214806463",
+          "gif": false
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "items": [
+            {
+              "mediaType": "video",
+              "vimeo": "1214966297"
+            },
+            {
+              "mediaType": "video",
+              "vimeo": "1214966295",
+              "image": "/uploads/2.gif"
+            },
+            {
+              "mediaType": "video",
+              "vimeo": "1214966296"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Traditional Cards"
+        },
+        {
+          "type": "text_media",
+          "body": "After the success of earlier campaigns, Card Guardians sought to optimize ad performance by merging two proven creative directions: a well-performing video ad and the visual mood of a indie card-based game.  \nThe goal remained the same (increase CTR), but with the challenge to bring a twist to a familiar ad format, making it more emotionally engaging and memorable for RPG and card-strategy fans.\n\n​**The Approach**\n\n**​**The creative focus was on strategic decision-making, showing moments where the player’s poor card choices lead to defeat.\n\nEach sequence was built and animated in After Effects with refined timing curves, expressions, and bounce animations to give the cards a tactile feel, while applying CRT textures and retro-inspired lighting to reinforce the nostalgic aesthetic.\n\n**The Result**\n\n​A 30-second video ad formatted for multiple platforms (Google Ads, Meta Ads, and mobile stores) combining tension, strategy, and nostalgia.\n\nThe final piece created a compelling contrast between player error and mastery, driving higher engagement and stronger curiosity to play.",
+          "side": "direita",
+          "mediaType": "video",
+          "vimeo": "1214958416",
+          "gif": false
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "items": [
+            {
+              "mediaType": "video",
+              "vimeo": "1214966299"
+            },
+            {
+              "mediaType": "video",
+              "vimeo": "1214966309"
+            },
+            {
+              "mediaType": "video",
+              "vimeo": "1214966310"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "AGS LA 2026 — Walk-Up",
+      "slug": "ags-la-2026-walk-up",
       "vimeo": "1200250328",
       "previewStart": 0,
       "category": "Motion",
@@ -19,78 +98,108 @@
       ]
     },
     {
-      "slug": "ags-la-2026-walk-up-alt",
+      "title": "Only a Genius",
+      "slug": "only-a-genius",
+      "vimeo": "1117236976",
+      "previewFile": "/uploads/Only a Genius_POSTER.mp4",
+      "previewStart": 0,
+      "category": "Motion",
+      "featured": true,
+      "thumb": "https://i.vimeocdn.com/video/2167268779-7a9488973a5419e3b54ebecf9eefc71578639a9b6ae28fbd045b4c3fa66db52e-d_640?region=us",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "Everyday Puzzles",
+          "subtitle": "UA Motion Design",
+          "clientQuote": "\"Multiple Games in One App! A hub of word puzzles and brain teasers to keep you entertained daily!\"",
+          "client": "Client: Fanatee"
+        },
+        {
+          "type": "video",
+          "vimeo": "1117236976",
+          "gif": false
+        },
+        {
+          "type": "text",
+          "body": "**The Challenge**\n\n​Drive CTR and CVR for a puzzle game targeting a younger audience: a competitive space where we need to grab attention fast.\n\n**​The Approach**\n\nThe ad provokes the viewer directly and dares them to prove otherwise. Bold colors and original character design kept the visual energy high while the psychological hook did the conversion work.\n\n**The Result**\n\nThe ad became the top performer of numerous campaigns and held that position for months, delivering high-value paying users with incredible ROAS.\n\nLocalized into 10 languages and adapted into 4 formats for all major ad platforms."
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "items": [
+            {
+              "mediaType": "imagem",
+              "image": "/uploads/10587c_8d191f82a63c4ac8a40b18cc50a2f443~mv2.gif"
+            },
+            {
+              "mediaType": "imagem",
+              "image": "/uploads/10587c_70b0e479c9f2457eb4e20c9f20b5fa9f~mv2.gif"
+            },
+            {
+              "mediaType": "video",
+              "image": "/uploads/10587c_c4af89bbf1114fc8bc26c2049eeba3c5~mv2.gif"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "AGS LA 2026 — Walk-Up (alt)",
+      "slug": "ags-la-2026-walk-up-alt",
       "vimeo": "1200249766",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2167289299-bb7e69fa29814fdf9e61bcd1ae15a80d06e8ba1e5f4a0491afe3e9492d3bbf6d-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/2167289299-bb7e69fa29814fdf9e61bcd1ae15a80d06e8ba1e5f4a0491afe3e9492d3bbf6d-d_640?region=us"
     },
     {
-      "slug": "knowledge-propaga-o",
       "title": "Knowledge — Propagação",
+      "slug": "knowledge-propaga-o",
       "vimeo": "1117237188",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102730-ef59ce71187362bb31304e2b247d4172a346c2ea7e428f945abb700c650b69ec-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/2057102730-ef59ce71187362bb31304e2b247d4172a346c2ea7e428f945abb700c650b69ec-d_640?region=us"
     },
     {
-      "slug": "around-the-world-versus",
       "title": "Around the World — Versus",
+      "slug": "around-the-world-versus",
       "vimeo": "1117237089",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102640-0a0d3ed4f5fe027d6fcff318d9536d727cb8a7fe3c3508280016f83ad6e7fb56-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/2057102640-0a0d3ed4f5fe027d6fcff318d9536d727cb8a7fe3c3508280016f83ad6e7fb56-d_640?region=us"
     },
     {
-      "slug": "stuck-in-line",
       "title": "Stuck in Line",
+      "slug": "stuck-in-line",
       "vimeo": "1117237072",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102594-0b24e15a20272786a6be14f23d07b37a3dfbf10decb64df7ad1831d96f5d51a8-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/2057102594-0b24e15a20272786a6be14f23d07b37a3dfbf10decb64df7ad1831d96f5d51a8-d_640?region=us"
     },
     {
-      "slug": "save-the-flame",
       "title": "Save the Flame",
+      "slug": "save-the-flame",
       "vimeo": "1117237010",
       "previewStart": 0,
       "category": "Motion",
       "featured": true,
-      "thumb": "https://i.vimeocdn.com/video/2057102547-598a3833ecf5c6d50533b4b8311b7009eff0b83c5218453642440c84c6c19886-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/2057102547-598a3833ecf5c6d50533b4b8311b7009eff0b83c5218453642440c84c6c19886-d_640?region=us"
     },
     {
-      "slug": "only-a-genius",
-      "title": "Only a Genius",
-      "vimeo": "1117236976",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/2167268779-7a9488973a5419e3b54ebecf9eefc71578639a9b6ae28fbd045b4c3fa66db52e-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "hashtag-versus",
       "title": "Hashtag Versus",
+      "slug": "hashtag-versus",
       "vimeo": "1117236909",
       "previewStart": 0,
       "category": "Motion",
       "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/2057102439-eb440493c4873ee745b869b6f78754e1a5b744553c83c6a8e736ce0ffc782345-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/2057102439-eb440493c4873ee745b869b6f78754e1a5b744553c83c6a8e736ce0ffc782345-d_640?region=us"
     },
     {
-      "slug": "app-preview",
       "title": "App Preview",
+      "slug": "app-preview",
       "vimeo": "1117223701",
       "previewStart": 0,
       "category": "Motion",
@@ -111,92 +220,28 @@
           "items": [
             {
               "mediaType": "video",
-              "vimeo": "719671885",
-              "image": ""
+              "vimeo": "719671885"
             },
             {
               "mediaType": "video",
-              "vimeo": "719665072",
-              "image": ""
+              "vimeo": "719665072"
             },
             {
               "mediaType": "video",
-              "vimeo": "719664242",
-              "image": ""
+              "vimeo": "719664242"
             }
           ]
         }
       ]
     },
     {
-      "slug": "stop-word-duel",
       "title": "Stop — Word Duel",
+      "slug": "stop-word-duel",
       "vimeo": "719671885",
       "previewStart": 0,
       "category": "Motion",
       "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449846176-d0665577ea92f8d85d32c024aa2a53bfd7ddca374fa7f475a94a60d3a5d65694-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "word-lanes-easter-eggs",
-      "title": "Word Lanes — Easter Eggs",
-      "vimeo": "719665072",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449839072-b1f6c3e11b90d964a8dadec4e0dc352d299850eac65f272341fa890b37f589fb-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "word-lanes-building-landscapes",
-      "title": "Word Lanes — Building Landscapes",
-      "vimeo": "719664242",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449826937-e9daa21191eff8f84cdc41a6cada3430cc0c9532f7db12b47f6990e51bd198d9-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "codycross-halloween-candies",
-      "title": "CodyCross — Halloween Candies",
-      "vimeo": "719664215",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449840653-279f2ed4bb2b6f0a2335ac021b1dd5111911ab33e8e97e8885aa8efaecab9dcb-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "codycross-cody-quest",
-      "title": "CodyCross — Cody Quest",
-      "vimeo": "719664177",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449840144-ef294bfa642af602ca49f51b3df83aa2e0085610a23c57af9b6402befd520459-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "codycross-world-rank",
-      "title": "CodyCross — World Rank",
-      "vimeo": "719664155",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1449826425-f4b620e66a05fa901acc644e8a1baefe36b4bb50ba23c1a6257500392cff8aaa-d_640?region=us",
-      "blocks": []
-    },
-    {
-      "slug": "stop-type-design",
-      "title": "Stop — Type Design",
-      "vimeo": "716752774",
-      "previewStart": 0,
-      "category": "Motion",
-      "featured": false,
-      "thumb": "https://i.vimeocdn.com/video/1444233339-4e1a7e972b5d944df3e86e4e3676ff89cd456a1a233ccd5dc87818dfc7c93365-d_640?region=us",
-      "blocks": []
+      "thumb": "https://i.vimeocdn.com/video/1449846176-d0665577ea92f8d85d32c024aa2a53bfd7ddca374fa7f475a94a60d3a5d65694-d_640?region=us"
     }
   ]
 }
