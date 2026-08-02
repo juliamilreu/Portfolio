@@ -60,9 +60,9 @@ content:
             default: false
             description: "Ligado = aparece na página inicial (até 6). Sempre aparece na página WORK."
           - name: thumb
-            label: "Capa (URL da imagem)"
-            type: string
-            description: "Deixe em branco para usar a capa automática do Vimeo."
+            label: "Capa (imagem estática)"
+            type: image
+            description: "Aparece fixa antes do vídeo/gif de preview do projeto começar a rodar. Deixe em branco para usar a capa automática do Vimeo."
           - name: blocks
             label: "Página do projeto (blocos)"
             type: block
