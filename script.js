@@ -146,9 +146,20 @@ function makeCard(p) {
     v.src = p.previewFile + "#t=0.1";
     v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata";
     v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
-    card.append(v, overlay);
-    card.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
-    card.addEventListener("mouseleave", () => { v.pause(); try { v.currentTime = 0; } catch (e) {} });
+    card.append(v);
+    if (p.thumb) {
+      // Capa estática enviada: fica por cima até o mouse passar, depois some e revela o vídeo.
+      const img = el("img", "thumb");
+      img.src = p.thumb; img.alt = p.title || ""; img.loading = "lazy";
+      card.append(img);
+      card.classList.add("has-cover");
+    }
+    card.append(overlay);
+    card.addEventListener("mouseenter", () => { v.play().catch(() => {}); card.classList.add("ready"); });
+    card.addEventListener("mouseleave", () => {
+      v.pause(); try { v.currentTime = 0; } catch (e) {}
+      card.classList.remove("ready");
+    });
   } else {
     // Preview via Vimeo (vídeo de preview alternativo, ou o principal)
     card.dataset.vimeo = p.previewVimeo || p.vimeo;
