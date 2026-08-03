@@ -245,14 +245,15 @@ function mountGalleryPlayer(container) {
 function mediaEmbed(b) {
   if (b.mediaType === "imagem") return imgEmbed(b.image);
   const vertical = b.orientation === "retrato";
-  return b.gif !== false ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical);
+  return b.gif !== false ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical, b.thumb);
 }
 // Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som.
 // Depois de dar play, aparecem (só no hover) dois botões pequenos: play/pause e mudo/com som.
-function cleanPlayerHtml(id, vertical) {
+// thumb: capa enviada por você. Se não tiver, usa a capa automática do Vimeo.
+function cleanPlayerHtml(id, vertical, thumb) {
   if (!id) return "";
   return `<div class="ratio clean-player${vertical ? " vertical" : ""}" data-vimeo="${id}">
-    <img class="cp-cover" src="https://vumbnail.com/${id}.jpg" alt="" />
+    <img class="cp-cover" src="${thumb || ("https://vumbnail.com/" + id + ".jpg")}" alt="" />
     <button class="cp-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
     <div class="cp-controls">
       <button class="cp-toggle" aria-label="Play/Pause">
@@ -343,7 +344,7 @@ function renderBlock(b) {
     }
     case "video": {
       const vertical = b.orientation === "retrato";
-      return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical)}</div>`;
+      return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical, b.thumb)}</div>`;
     }
     case "gallery": {
       const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
