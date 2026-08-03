@@ -121,6 +121,10 @@ content:
                       values:
                         - { name: paisagem, label: "Paisagem (16:9)" }
                         - { name: retrato, label: "Retrato / vertical (9:16)" }
+                  - name: thumb
+                    label: "Capa do vídeo (opcional)"
+                    type: image
+                    description: "Aparece antes de dar play. Deixe em branco para usar a capa automática do Vimeo."
                   - { name: image, label: "Imagem", type: image }
               - name: video
                 label: "Vídeo (largura total)"
@@ -136,6 +140,10 @@ content:
                       values:
                         - { name: paisagem, label: "Paisagem (16:9)" }
                         - { name: retrato, label: "Retrato / vertical (9:16)" }
+                  - name: thumb
+                    label: "Capa do vídeo (opcional)"
+                    type: image
+                    description: "Aparece antes de dar play. Deixe em branco para usar a capa automática do Vimeo."
               - name: gallery
                 label: "Galeria (vídeos/imagens lado a lado)"
                 fields:
