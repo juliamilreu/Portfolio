@@ -246,9 +246,14 @@ function galleryFileEmbed(src) {
   if (!src) return "";
   return `<div class="ratio gallery-file"><video src="${src}" muted loop autoplay playsinline></video></div>`;
 }
+// Imagem de galeria dentro da mesma caixa quadrada dos vídeos, pra ficar tudo do mesmo tamanho.
+function galleryImageEmbed(src) {
+  if (!src) return "";
+  return `<div class="ratio gallery-image"><img src="${src}" alt="" loading="lazy" /></div>`;
+}
 // Decide qual mídia usar em cada item da galeria, de acordo com o Tipo escolhido no CMS.
 function galleryItemEmbed(it) {
-  if (it.mediaType === "imagem") return imgEmbed(it.image);
+  if (it.mediaType === "imagem") return galleryImageEmbed(it.image);
   if (it.mediaType === "video") return galleryVideoEmbed(it.vimeo, it.thumb);
   return galleryFileEmbed(it.file);
 }
