@@ -213,13 +213,12 @@ function videoEmbed(id, gif, vertical) {
   return `<div class="ratio${vertical ? " vertical" : ""}"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
 }
 function imgEmbed(src) { return src ? `<img class="b-img" src="${src}" loading="lazy" alt="" />` : ""; }
-// Vídeo de galeria com capa opcional: mostra a capa (jpg) até o Vimeo carregar, depois troca sem piscar.
+// Vídeo de galeria via player do Vimeo (mais confiável que o iframe cru).
+// Se tiver capa, mostra ela até o vídeo carregar, depois troca sem piscar.
 function galleryVideoEmbed(id, thumb) {
   if (!id) return "";
-  if (!thumb) return videoEmbed(id, true);
-  return `<div class="ratio gallery-video" data-vimeo="${id}">
-    <img class="gv-cover" src="${thumb}" alt="" />
-  </div>`;
+  const cover = thumb ? `<img class="gv-cover" src="${thumb}" alt="" />` : "";
+  return `<div class="ratio gallery-video" data-vimeo="${id}">${cover}</div>`;
 }
 function setupGalleryPlayers() {
   document.querySelectorAll(".gallery-video[data-vimeo]").forEach(container => {
@@ -241,6 +240,17 @@ function mountGalleryPlayer(container) {
   });
   container._player = player;
   player.ready().then(() => { container.classList.add("ready"); }).catch(() => {});
+}
+// Vídeo/gif enviado direto (upload), sem Vimeo: toca mudo, em loop, automático.
+function galleryFileEmbed(src) {
+  if (!src) return "";
+  return `<div class="ratio gallery-file"><video src="${src}" muted loop autoplay playsinline></video></div>`;
+}
+// Decide qual mídia usar em cada item da galeria, de acordo com o Tipo escolhido no CMS.
+function galleryItemEmbed(it) {
+  if (it.mediaType === "imagem") return imgEmbed(it.image);
+  if (it.mediaType === "video") return galleryVideoEmbed(it.vimeo, it.thumb);
+  return galleryFileEmbed(it.file);
 }
 function mediaEmbed(b) {
   if (b.mediaType === "imagem") return imgEmbed(b.image);
@@ -349,7 +359,7 @@ function renderBlock(b) {
     case "gallery": {
       const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
       const items = (b.items || []).map(it => {
-        const media = it.mediaType === "imagem" ? imgEmbed(it.image) : galleryVideoEmbed(it.vimeo, it.thumb);
+        const media = galleryItemEmbed(it);
         const title = it.title ? `<div class="g-title">${esc(it.title)}</div>` : "";
         return `<div class="g-item">${title}${media}</div>`;
       }).join("");
