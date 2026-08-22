@@ -49,10 +49,10 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
   cursor: pointer;
 }
 .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.reel-holder, .reel-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.reel-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel-holder, .reel-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
+.reel-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 1; }
 .reel-play {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;
   width: 76px; height: 76px; border-radius: 50%; border: 0; cursor: pointer;
   background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center;
   transition: transform .15s;
@@ -64,6 +64,9 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .reel.started .reel-cover { display: none; }
 .reel.started .reel-play { display: none; }
 .reel.started.paused .reel-play { display: flex; }
+/* Camada transparente por cima do iframe do Vimeo — sem ela, o clique é "engolido"
+   pelo iframe e não dá pra pausar depois de iniciar o vídeo. */
+.reel-hit { position: absolute; inset: 0; z-index: 3; }
 /* Botão pequeno de mudo/com som, fixo no canto direito superior — só aparece depois de iniciar o vídeo. */
 .reel-mute {
   position: absolute; top: 14px; right: 14px; z-index: 4;
@@ -149,20 +152,23 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
    clique em qualquer lugar do vídeo carrega e toca em loop; clique de novo pausa
    e mostra só o botão grande de play central. Botão de mudo fixo no canto. */
 .clean-player { cursor: pointer; }
-.cp-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.cp-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 1; }
 .cp-play {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;
   width: 72px; height: 72px; border-radius: 50%; border: 0; cursor: pointer;
   background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; transition: transform .15s;
 }
 .cp-play:hover { transform: translate(-50%, -50%) scale(1.06); }
 .cp-play svg { width: 28px; height: 28px; margin-left: 4px; fill: var(--primary); }
-.cp-holder, .cp-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.cp-holder, .cp-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
 /* Antes de começar (sem .started): mostra capa + play grande, igual antes. */
 /* Depois de começar (.started): a capa some pra sempre; o play grande só reaparece enquanto pausado (.paused). */
 .clean-player.started .cp-cover { display: none; }
 .clean-player.started .cp-play { display: none; }
 .clean-player.started.paused .cp-play { display: flex; }
+/* Camada transparente por cima do iframe do Vimeo — sem ela, o clique é "engolido"
+   pelo iframe e não dá pra pausar depois de iniciar o vídeo. */
+.cp-hit { position: absolute; inset: 0; z-index: 3; }
 /* Botão pequeno de mudo/com som, fixo no canto direito superior — só aparece depois de iniciar o vídeo. */
 .cp-mute {
   position: absolute; top: 14px; right: 14px; z-index: 4;
@@ -233,6 +239,10 @@ footer .social a {
 }
 footer .social a:hover { transform: translateY(-2px); }
 footer .social svg { width: 22px; height: 22px; fill: var(--primary); }
+/* Behance usa um selo próprio (imagem) que já vem com o círculo branco embutido,
+   então esse link fica sem o fundo branco padrão pra não duplicar o círculo. */
+footer .social a.badge { background: transparent; }
+footer .social a .social-badge { width: 44px; height: 44px; display: block; object-fit: contain; }
 .loading { color: rgba(54,48,51,0.5); padding: 30px 0; font-size: 15px; }
 @media (max-width: 820px) {
   .wrap { padding: 0 22px; }
