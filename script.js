@@ -10,15 +10,12 @@ function el(tag, cls, html) {
   if (html != null) e.innerHTML = html;
   return e;
 }
-
 const PREVIEW_SECONDS = 2.4;
-
 const SOCIAL_ICONS = {
   linkedin: '<svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21H18.5v-5.5c0-1.3-.02-3-1.85-3-1.85 0-2.13 1.45-2.13 2.9V21H10z"/></svg>',
   behance: '<svg viewBox="0 0 24 24"><path d="M8.2 6.6c.9 0 1.6.1 2.2.3.6.2 1 .5 1.4.8.3.3.6.7.7 1.2.1.4.2.9.2 1.5 0 .6-.15 1.1-.4 1.5-.3.4-.7.8-1.3 1 .8.25 1.4.65 1.8 1.2.4.55.6 1.25.6 2.05 0 .65-.13 1.2-.4 1.7-.25.5-.6.9-1.05 1.2-.45.3-.95.5-1.55.65-.55.1-1.15.2-1.75.2H2V6.6h6.2zm-.35 4.85c.5 0 .9-.12 1.2-.35.3-.25.45-.62.45-1.12 0-.28-.05-.52-.15-.7a1.1 1.1 0 00-.43-.43 1.7 1.7 0 00-.6-.22 4 4 0 00-.72-.06H4.7v2.9h3.15zm.18 5.1c.28 0 .55-.03.8-.08.25-.05.46-.14.64-.27.18-.13.32-.3.43-.52.1-.22.16-.5.16-.83 0-.65-.18-1.1-.55-1.4-.36-.28-.85-.42-1.45-.42H4.7v3.52h3.5zM16.4 16.5c.37.36.9.54 1.6.54.5 0 .93-.13 1.3-.38.36-.25.58-.52.66-.8h2.13c-.34 1.05-.86 1.8-1.57 2.26-.7.45-1.55.68-2.55.68-.7 0-1.32-.11-1.88-.33a4 4 0 01-1.42-.95 4.2 4.2 0 01-.9-1.45 5.3 5.3 0 01-.32-1.88c0-.66.11-1.28.33-1.85.22-.57.53-1.06.94-1.47.4-.42.88-.74 1.44-.97a4.9 4.9 0 011.86-.34c.74 0 1.4.14 1.96.43.56.3 1.02.68 1.38 1.18.36.5.62 1.06.78 1.7.16.62.21 1.28.16 1.97h-6.3c0 .7.24 1.32.6 1.68zm2.83-4.57c-.3-.32-.78-.5-1.36-.5-.38 0-.7.07-.95.2-.25.12-.45.28-.6.46a1.6 1.6 0 00-.32.6c-.06.2-.1.4-.11.58h3.9c-.06-.62-.27-1.03-.56-1.34zM15.6 7.9h4.87v1.18H15.6z"/></svg>',
   dribbble: '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.6 4.6a8.4 8.4 0 011.9 5.27c-.28-.06-3.07-.62-5.88-.27-.06-.14-.12-.29-.18-.43-.18-.42-.38-.85-.59-1.27 3.1-1.27 4.52-3.08 4.75-3.3zM12 3.46c1.93 0 3.7.72 5.04 1.9-.19.27-1.46 1.96-4.45 3.08a40 40 0 00-2.86-4.46c.73-.18 1.49-.27 2.27-.27zm-3.9.84a47 47 0 012.83 4.4A15 15 0 013.6 9.5a8.55 8.55 0 014.5-5.2zM3.42 12v-.26a14 14 0 008.18-1.18c.18.35.35.7.5 1.06l-.34.1c-3.66 1.18-5.5 4.5-5.66 4.78A8.46 8.46 0 013.42 12zm8.58 8.54a8.5 8.5 0 01-5.24-1.8c.12-.26 1.5-2.9 5.5-4.3l.05-.02c1 2.6 1.41 4.78 1.52 5.4a8.4 8.4 0 01-1.83.72zm3.26-1.5c-.08-.46-.46-2.55-1.38-5.12 2.65-.42 4.96.27 5.25.36a8.45 8.45 0 01-3.87 4.76z"/></svg>'
 };
-
 function fillCommon(site) {
   const setText = (sel, val) => { const n = document.querySelector(sel); if (n && val != null) n.textContent = val; };
   setText("[data-brand]", site.name);
@@ -49,7 +46,6 @@ function fillCommon(site) {
   setText("[data-hero-greeting]", site.heroGreeting);
   setText("[data-hero]", site.hero);
   setText("[data-hero-emph]", site.heroEmphasis);
-
   // Página About: bio em parágrafos + foto
   const aboutBody = document.querySelector("[data-about]");
   if (aboutBody && site.about) {
@@ -61,11 +57,9 @@ function fillCommon(site) {
       ? `<img src="${site.aboutPhoto}" alt="${esc(site.name || "")}" />`
       : `<div class="photo-ph">Sua foto aqui</div>`;
   }
-
   document.querySelectorAll("[data-email]").forEach(n => {
     if (site.email) { n.textContent = site.email; n.href = "mailto:" + site.email; }
   });
-
   const socialWrap = document.querySelector("[data-social]");
   if (socialWrap) {
     const links = [["linkedin", site.linkedin], ["behance", site.behance], ["dribbble", site.dribbble]]
@@ -77,33 +71,61 @@ function fillCommon(site) {
       socialWrap.appendChild(a);
     });
   }
-
-  // Reel (home) — capa personalizada + play limpo (sem barra do Vimeo)
+  // Reel (home) — mesmo tratamento do clean-player (estilo Reels/TikTok):
+  // clique carrega e toca em loop; clique de novo pausa e mostra o play grande;
+  // botão pequeno fixo no canto pra mudo/com som.
   const reel = document.querySelector("[data-reel]");
   if (reel && site.reel) {
     const cover = site.reelCover || `https://vumbnail.com/${site.reel}.jpg`;
     reel.innerHTML =
       `<img class="reel-cover" src="${cover}" alt="" />
-       <button class="reel-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
-    reel.addEventListener("click", () => {
+       <button class="reel-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+       <button class="reel-mute" aria-label="Mudo/Com som">
+         <svg class="ic-unmuted" viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 12c0-1.77-.77-3.29-2-4.24v8.48c1.23-.95 2-2.47 2-4.24z"/></svg>
+         <svg class="ic-muted" viewBox="0 0 24 24" hidden><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M19.07 4.93l1.41 1.41L18.4 8.4l2.08 2.08-1.41 1.41L17 9.81l-2.07 2.08-1.41-1.41L15.6 8.4l-2.08-2.08 1.41-1.41L17 7l2.07-2.07z"/></svg>
+       </button>`;
+    const reelMuteBtn = reel.querySelector(".reel-mute");
+    function syncReelMuteIcon(muted) {
+      if (!reelMuteBtn) return;
+      reelMuteBtn.querySelector(".ic-unmuted").hidden = muted;
+      reelMuteBtn.querySelector(".ic-muted").hidden = !muted;
+    }
+    reel.addEventListener("click", (e) => {
+      if (e.target.closest(".reel-mute")) return; // tratado no listener próprio, abaixo
       if (reel._player) {
         reel._player.getPaused().then(pp => (pp ? reel._player.play() : reel._player.pause())).catch(() => {});
         return;
       }
-      reel.classList.add("playing");
+      // .started fica pra sempre (capa não volta mais); .paused controla o play grande.
+      reel.classList.add("started");
+      reel.classList.remove("paused");
       const holder = document.createElement("div");
       holder.className = "reel-holder";
       reel.appendChild(holder);
-      // controls:false esconde a barra do Vimeo; o clique do usuário libera o som
+      // controls:false esconde a barra do Vimeo; muted:true garante autoplay confiável;
+      // loop:true toca continuamente igual reels/tiktok; a pessoa liga o som pelo botão.
       reel._player = new Vimeo.Player(holder, {
-        id: site.reel, autoplay: true, controls: false,
+        id: site.reel, autoplay: true, muted: true, loop: true, controls: false,
         title: false, byline: false, portrait: false, dnt: true
       });
       reel._player.play().catch(() => {});
+      syncReelMuteIcon(true);
+      reel._player.on("play", () => reel.classList.remove("paused"));
+      reel._player.on("pause", () => reel.classList.add("paused"));
+      reel._player.on("volumechange", (d) => syncReelMuteIcon(d.volume === 0));
     });
+    if (reelMuteBtn) {
+      reelMuteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!reel._player) return;
+        reel._player.getMuted().then(m => {
+          reel._player.setMuted(!m).catch(() => {});
+          syncReelMuteIcon(!m);
+        }).catch(() => {});
+      });
+    }
   }
 }
-
 // ---- Grid + preview no hover ----
 let observer;
 function setupObserver() {
@@ -134,12 +156,10 @@ function ensurePlayer(card) {
     if (d.seconds >= start + PREVIEW_SECONDS) player.setCurrentTime(start).catch(() => {});
   });
 }
-
 function makeCard(p) {
   const card = el("div", "card");
   const overlay = el("div", "overlay");
   overlay.appendChild(el("div", "meta", `<div class="t">${p.title || ""}</div><div class="c">${p.category || ""}</div>`));
-
   if (p.previewFile) {
     // Vídeo enviado (mp4/webm): object-fit cover recorta qualquer proporção em 1:1, 1º frame = capa.
     const v = el("video", "thumb-vid");
@@ -169,7 +189,6 @@ function makeCard(p) {
     img.src = p.thumb || ("https://vumbnail.com/" + (p.previewVimeo || p.vimeo) + ".jpg");
     img.alt = p.title || ""; img.loading = "lazy";
     card.append(player, img, overlay);
-
     card.addEventListener("mouseenter", () => {
       ensurePlayer(card);
       const start = Number(card.dataset.start) || 0;
@@ -190,18 +209,15 @@ function makeCard(p) {
       });
     });
   }
-
   card.addEventListener("click", () => { window.location.href = "project.html?id=" + encodeURIComponent(p.slug); });
   return card;
 }
-
 function renderGrid(grid, projects, filter) {
   grid.innerHTML = "";
   projects
     .filter(p => filter === "Todos" || filter === "ALL" || p.category === filter)
     .forEach(p => { const c = makeCard(p); grid.appendChild(c); observer.observe(c); });
 }
-
 // ---- Página de projeto (construtor de blocos) ----
 function md(s) { return s ? (window.marked ? window.marked.parse(s) : `<p>${s}</p>`) : ""; }
 function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
@@ -263,66 +279,54 @@ function mediaEmbed(b) {
   return b.gif !== false ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical, b.thumb);
 }
 // Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som.
-// Depois de dar play, aparecem (só no hover) dois botões pequenos: play/pause e mudo/com som.
+// Estilo "Reels/TikTok": clique em qualquer lugar do vídeo carrega e toca em loop;
+// clique de novo pausa e mostra só o botão grande de play central.
+// Existe apenas um botão pequeno fixo no canto para mudo/com som.
 // thumb: capa enviada por você. Se não tiver, usa a capa automática do Vimeo.
 function cleanPlayerHtml(id, vertical, thumb) {
   if (!id) return "";
   return `<div class="ratio clean-player${vertical ? " vertical" : ""}" data-vimeo="${id}">
     <img class="cp-cover" src="${thumb || ("https://vumbnail.com/" + id + ".jpg")}" alt="" />
     <button class="cp-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-    <div class="cp-controls">
-      <button class="cp-toggle" aria-label="Play/Pause">
-        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-      </button>
-      <button class="cp-mute" aria-label="Mudo/Com som">
-        <svg class="ic-unmuted" viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 12c0-1.77-.77-3.29-2-4.24v8.48c1.23-.95 2-2.47 2-4.24z"/></svg>
-        <svg class="ic-muted" viewBox="0 0 24 24" hidden><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M19.07 4.93l1.41 1.41L18.4 8.4l2.08 2.08-1.41 1.41L17 9.81l-2.07 2.08-1.41-1.41L15.6 8.4l-2.08-2.08 1.41-1.41L17 7l2.07-2.07z"/></svg>
-      </button>
-    </div>
+    <button class="cp-mute" aria-label="Mudo/Com som">
+      <svg class="ic-unmuted" viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 12c0-1.77-.77-3.29-2-4.24v8.48c1.23-.95 2-2.47 2-4.24z"/></svg>
+      <svg class="ic-muted" viewBox="0 0 24 24" hidden><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M19.07 4.93l1.41 1.41L18.4 8.4l2.08 2.08-1.41 1.41L17 9.81l-2.07 2.08-1.41-1.41L15.6 8.4l-2.08-2.08 1.41-1.41L17 7l2.07-2.07z"/></svg>
+    </button>
   </div>`;
 }
 function initCleanPlayers() {
   document.querySelectorAll(".clean-player").forEach(cp => {
-    const toggleBtn = cp.querySelector(".cp-toggle");
     const muteBtn = cp.querySelector(".cp-mute");
-
-    function syncPlayIcon(paused) {
-      if (!toggleBtn) return;
-      toggleBtn.querySelector(".ic-play").hidden = !paused;
-      toggleBtn.querySelector(".ic-pause").hidden = paused;
-    }
     function syncMuteIcon(muted) {
       if (!muteBtn) return;
       muteBtn.querySelector(".ic-unmuted").hidden = muted;
       muteBtn.querySelector(".ic-muted").hidden = !muted;
     }
-
     function startPlayer() {
       if (!window.Vimeo) return;
-      cp.classList.add("playing");
+      // .started fica pra sempre (capa não volta mais); .paused controla o play grande.
+      cp.classList.add("started");
+      cp.classList.remove("paused");
       const holder = document.createElement("div");
       holder.className = "cp-holder";
       cp.appendChild(holder);
-      // muted:true garante autoplay confiável nos navegadores; a pessoa liga o som pelo botão.
+      // muted:true garante autoplay confiável nos navegadores; loop:true pra tocar em loop
+      // igual reels/tiktok; a pessoa liga o som pelo botão de mudo.
       cp._player = new Vimeo.Player(holder, {
-        id: cp.dataset.vimeo, autoplay: true, muted: true, controls: false,
+        id: cp.dataset.vimeo, autoplay: true, muted: true, loop: true, controls: false,
         title: false, byline: false, portrait: false, dnt: true
       });
       cp._player.play().catch(() => {});
-      syncPlayIcon(false);
       syncMuteIcon(true);
-      cp._player.on("play", () => syncPlayIcon(false));
-      cp._player.on("pause", () => syncPlayIcon(true));
+      cp._player.on("play", () => cp.classList.remove("paused"));
+      cp._player.on("pause", () => cp.classList.add("paused"));
       cp._player.on("volumechange", (d) => syncMuteIcon(d.volume === 0));
     }
-
     cp.addEventListener("click", (e) => {
       if (e.target.closest(".cp-mute")) return; // tratado no listener próprio, abaixo
       if (!cp._player) { startPlayer(); return; }
       cp._player.getPaused().then(pp => (pp ? cp._player.play() : cp._player.pause())).catch(() => {});
     });
-
     if (muteBtn) {
       muteBtn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -335,7 +339,6 @@ function initCleanPlayers() {
     }
   });
 }
-
 function renderBlock(b) {
   switch (b.type) {
     case "header": {
@@ -374,7 +377,6 @@ function renderBlock(b) {
     default: return "";
   }
 }
-
 function renderProject(projects) {
   const wrap = document.querySelector("[data-project]");
   const id = new URLSearchParams(location.search).get("id");
@@ -390,16 +392,13 @@ function renderProject(projects) {
   initCleanPlayers();
   setupGalleryPlayers();
 }
-
 async function init() {
   let site = {}, data = { projects: [] };
   try { site = await loadJSON("site.json"); } catch (e) {}
   try { data = await loadJSON("projects.json"); } catch (e) {}
   const projects = data.projects || [];
-
   fillCommon(site);
   setupObserver();
-
   const grid = document.querySelector("[data-grid]");
   if (grid) {
     const mode = grid.dataset.mode;
@@ -423,10 +422,8 @@ async function init() {
       renderGrid(grid, projects, "ALL");
     }
   }
-
   if (document.querySelector("[data-project]")) renderProject(projects);
 }
-
 // Lightbox (reserva)
 function closeLightbox() {
   const lb = document.querySelector("[data-lightbox]");
@@ -439,5 +436,4 @@ document.addEventListener("click", e => {
   if (e.target.matches("[data-lightbox]") || e.target.matches("[data-close]")) closeLightbox();
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
-
 init();
