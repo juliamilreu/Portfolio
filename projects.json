@@ -250,8 +250,8 @@
         },
         {
           "type": "image",
-          "image": "/uploads/screenshots.png",
-          "full": true
+          "image": "/uploads/frames.png",
+          "full": false
         },
         {
           "type": "heading",
@@ -260,7 +260,7 @@
         {
           "type": "image",
           "image": "/uploads/10587c_87dec955c88a4140902597b63420dce8~mv2.png",
-          "full": true
+          "full": false
         },
         {
           "type": "text",
@@ -268,12 +268,12 @@
         },
         {
           "type": "text_media",
-          "body": "# **App Stores**\n\n### The app preview was adapted to meet both Apple App Store and Google Play Store requirements.  \nEach version follows the platform’s specific dimensions, aspect ratios, and duration limits, ensuring optimal visual quality and performance.\n\n",
+          "body": "# **App Stores**\n\n### The app preview was adapted to meet both Apple App Store and Google Play Store requirements.\n\nEach version follows the platform’s specific dimensions, aspect ratios, and duration limits, ensuring optimal visual quality and performance.\n\n",
           "side": "esquerda",
           "mediaType": "imagem",
           "gif": false,
           "orientation": "paisagem",
-          "image": "/uploads/Stores.png"
+          "image": "/uploads/STORE.png"
         }
       ]
     }
