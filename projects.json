@@ -310,11 +310,11 @@
           "items": [
             {
               "mediaType": "arquivo",
-              "file": "/uploads/10587c_811e51bb230d42ceb03723ef1ba96742~mv2.gif"
+              "file": "/uploads/5-1.gif"
             },
             {
               "mediaType": "arquivo",
-              "file": "/uploads/10587c_f5f33c854e3f486a8258edfdd7696bde~mv2.gif"
+              "file": "/uploads/7.gif"
             }
           ]
         },
@@ -337,11 +337,12 @@
           "columns": 2,
           "items": [
             {
-              "mediaType": "arquivo"
+              "mediaType": "arquivo",
+              "file": "/uploads/1_2.gif"
             },
             {
               "mediaType": "arquivo",
-              "file": "/uploads/10587c_ef0db4785b1f4fa48e28b258f64a4565~mv2.gif"
+              "file": "/uploads/6.gif"
             }
           ]
         }
