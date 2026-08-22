@@ -178,6 +178,48 @@
           ]
         }
       ]
+    },
+    {
+      "title": "AGS After Party",
+      "slug": "ags-after-party",
+      "vimeo": "1220443411",
+      "previewStart": 0,
+      "category": "Motion",
+      "featured": true,
+      "thumb": "/uploads/AGSSF2025_AfterParty_1200x1200_Animated_00000.jpg",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "Sky High Sounds After Party",
+          "subtitle": "AGS San Francisco 2025",
+          "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
+          "client": "App Growth Summit"
+        },
+        {
+          "type": "text_media",
+          "body": "A multi-format poster created for the rooftop after party. ​\n\nThe design was showed across across venue screens, printed signage, social media, and the event website.​\n\nThe design matched the energy: bold retro typography, a grungy textured feel, and San Francisco identity.​\n\nOne visual that had to work everywhere, from a phone screen to a printed wall.",
+          "side": "esquerda",
+          "mediaType": "video",
+          "vimeo": "1220443411",
+          "gif": true,
+          "orientation": "retrato",
+          "thumb": "/uploads/AGSSF2025_AfterParty_1200x1200_Animated_00000-1.jpg"
+        },
+        {
+          "type": "gallery",
+          "columns": 2,
+          "items": [
+            {
+              "mediaType": "imagem",
+              "file": "/uploads/10587c_d2c3d2510bad4f89a70f1d9b37db3733~mv2.avif"
+            },
+            {
+              "mediaType": "imagem",
+              "file": "/uploads/10587c_f8255c90e8714a3dae2b3a666b4e8325~mv2.avif"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
