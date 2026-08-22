@@ -280,8 +280,45 @@ function mountGalleryPlayer(container) {
     id: container.dataset.vimeo, background: true, muted: true, dnt: true
   });
   container._player = player;
-  player.ready().then(() => { container.classList.add("ready"); }).catch(() => {});
+  player.ready().then(() => {
+    container.classList.add("ready");
+    return Promise.all([player.getVideoWidth(), player.getVideoHeight()]);
+  }).then(([vw, vh]) => {
+    if (vw && vh) {
+      container._videoSize = { w: vw, h: vh };
+      container._holder = holder;
+      fitCover(container, holder, vw, vh);
+    }
+  }).catch(() => {});
 }
+// O player do Vimeo (modo "background") só encaixa o vídeo inteiro na caixa, sem cortar —
+// então um vídeo 16:9 dentro de uma caixa quadrada da galeria sobra espaço em cima/embaixo.
+// Isso aqui redimensiona o player pra preencher e cortar a caixa toda (igual object-fit: cover),
+// usando o tamanho real do vídeo em vez de supor que é sempre 16:9.
+function fitCover(container, holder, videoW, videoH) {
+  const cw = container.clientWidth, ch = container.clientHeight;
+  if (!cw || !ch) return;
+  const scale = Math.max(cw / videoW, ch / videoH);
+  holder.style.width = Math.ceil(videoW * scale) + "px";
+  holder.style.height = Math.ceil(videoH * scale) + "px";
+  holder.style.top = "50%";
+  holder.style.left = "50%";
+  holder.style.right = "auto";
+  holder.style.bottom = "auto";
+  holder.style.transform = "translate(-50%, -50%)";
+}
+// Se a janela mudar de tamanho (redimensionar, girar o celular), reajusta o corte
+// de todos os vídeos de galeria já montados, sem precisar recarregar a página.
+window.addEventListener("resize", () => {
+  clearTimeout(window._gvResizeTimer);
+  window._gvResizeTimer = setTimeout(() => {
+    document.querySelectorAll(".gallery-video.ready").forEach(container => {
+      if (container._videoSize && container._holder) {
+        fitCover(container, container._holder, container._videoSize.w, container._videoSize.h);
+      }
+    });
+  }, 150);
+});
 // Detecta se o arquivo enviado é uma imagem (jpg/png/webp/gif etc.) em vez de um vídeo real.
 // Isso evita que uma foto enviada no campo "Arquivo" fique invisível (a tag de vídeo não
 // consegue tocar jpg/png, e um .gif "cru" também não toca como vídeo).
