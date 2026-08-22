@@ -133,11 +133,12 @@
     {
       "title": "AGS Los Angeles 2026",
       "slug": "ags-walk-up-videos",
-      "vimeo": "1200249766",
-      "previewFile": "/uploads/Only a Genius_POSTER.mp4",
-      "previewStart": 0,
+      "vimeo": "1200250328",
+      "previewVimeo": "1200250328",
+      "previewStart": 1,
       "category": "Motion",
       "featured": true,
+      "thumb": "/uploads/AGSLA26_Walk-Up_01_Hopper_00000.jpg",
       "blocks": [
         {
           "type": "header",
@@ -145,6 +146,36 @@
           "subtitle": "Event Motion Design",
           "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
           "client": "App Growth Summit"
+        },
+        {
+          "type": "video",
+          "vimeo": "1200250328",
+          "gif": false,
+          "orientation": "paisagem"
+        },
+        {
+          "type": "text",
+          "body": "A 7-second walk-up graphic played on venue screens to open each session. Built around LA's visual identity, it set the tone before speakers reached the stage, giving the event a polished, city-native feel that elevated the production value."
+        },
+        {
+          "type": "divider",
+          "width": "curta"
+        },
+        {
+          "type": "gallery",
+          "columns": 2,
+          "items": [
+            {
+              "title": "New York City",
+              "mediaType": "video",
+              "vimeo": "1220442170"
+            },
+            {
+              "title": "Tokyo",
+              "mediaType": "video",
+              "vimeo": "1220442169"
+            }
+          ]
         }
       ]
     }
