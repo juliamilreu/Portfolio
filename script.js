@@ -236,10 +236,26 @@ function makeCard(p) {
   return card;
 }
 function renderGrid(grid, projects, filter) {
-  grid.innerHTML = "";
-  projects
-    .filter(p => filter === "Todos" || filter === "ALL" || p.category === filter)
-    .forEach(p => { const c = makeCard(p); grid.appendChild(c); observer.observe(c); });
+  const filtered = projects.filter(p => filter === "Todos" || filter === "ALL" || p.category === filter);
+  const doRender = () => {
+    grid.classList.remove("is-filtering");
+    grid.innerHTML = "";
+    filtered.forEach((p, i) => {
+      const c = makeCard(p);
+      c.style.setProperty("--i", i);
+      grid.appendChild(c);
+      observer.observe(c);
+    });
+  };
+  const existing = grid.querySelectorAll(".card");
+  if (existing.length) {
+    // Transição suave: os cards atuais somem antes dos novos entrarem.
+    existing.forEach((c, i) => c.style.setProperty("--i", i));
+    grid.classList.add("is-filtering");
+    setTimeout(doRender, 220);
+  } else {
+    doRender();
+  }
 }
 // ---- Página de projeto (construtor de blocos) ----
 function md(s) { return s ? (window.marked ? window.marked.parse(s) : `<p>${s}</p>`) : ""; }
@@ -493,8 +509,11 @@ async function init() {
         cats.forEach((c, i) => {
           const b = el("button", i === 0 ? "active" : null, c.toUpperCase());
           b.addEventListener("click", () => {
-            filterBar.querySelectorAll("button").forEach(x => x.classList.remove("active"));
+            if (b.classList.contains("active")) return;
+            filterBar.querySelectorAll("button").forEach(x => x.classList.remove("active", "pop"));
             b.classList.add("active");
+            void b.offsetWidth; // reinicia a animação mesmo se clicado de novo rápido
+            b.classList.add("pop");
             renderGrid(grid, projects, c);
           });
           filterBar.appendChild(b);
