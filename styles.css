@@ -146,6 +146,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .b-heading, .b-text, .b-textmedia, .b-video, .b-gallery, .b-image { margin-bottom: 40px; }
 .ratio { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: var(--bg); }
 .ratio.vertical { width: 340px; max-width: 100%; aspect-ratio: 9 / 16; height: auto; margin: 0 auto; }
+.ratio.square { width: 480px; max-width: 100%; aspect-ratio: 1 / 1; height: auto; margin: 0 auto; }
 .b-tm-media { min-width: 0; }
 .ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 /* Clean player (vídeos com som) — estilo Reels/TikTok:
