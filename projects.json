@@ -272,6 +272,80 @@
           "image": "/uploads/STORE.png"
         }
       ]
+    },
+    {
+      "title": "Pet Shop Fever",
+      "slug": "pet-shop-fever-ads",
+      "vimeo": "1214958947",
+      "previewVimeo": "1220478755",
+      "previewStart": 12,
+      "category": "Motion",
+      "featured": true,
+      "thumb": "/uploads/1_00000-1.jpg",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "Pet Shop Fever",
+          "subtitle": "UA Motion Design",
+          "clientQuote": "\"Run your own pet hotel and petshop! \nCare for cats, dogs, bunnies, birds, and more in this heartwarming animal game!\"",
+          "client": "Tapps"
+        },
+        {
+          "type": "heading",
+          "text": "Diary Creative Ad"
+        },
+        {
+          "type": "text_media",
+          "body": "**The Challenge**\n\nDrive higher CTR for a mobile game targeting women 35–44, an audience motivated by collection, emotional connection, and mastery.​​\n\n**The Approach** \n\nI've designed a 30-second video around authentic gameplay moments - pet variety, shop management flow and emotional triggers - to build connection with the target audience. ​​\n\n**The Result​**\n\nA multi-ratio video adapted for Google Ads, Meta Ads, and App Stores - translating the game's core experience into a conversion-focused creative.",
+          "side": "esquerda",
+          "mediaType": "video",
+          "vimeo": "1220478755",
+          "gif": false,
+          "orientation": "retrato",
+          "thumb": "/uploads/9x16_00000.jpg"
+        },
+        {
+          "type": "gallery",
+          "columns": 2,
+          "items": [
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/10587c_811e51bb230d42ceb03723ef1ba96742~mv2.gif"
+            },
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/10587c_f5f33c854e3f486a8258edfdd7696bde~mv2.gif"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "New Spa and Garden"
+        },
+        {
+          "type": "text_media",
+          "body": "**The Challenge​**\n\nAnnounce a major content update: new environments, pets, and workstations - with a paid ad that would hold attention.​\n\n**The Approach​**\n\nBuilt a fun mini-narrative instead of a standard gameplay montage. Structured the pacing around contrast: a calm opening that breaks into humor and chaos.\n\n**The Result​**\n\n30-second multi-platform ad that turned a feature announcement into a short animated story - driving anticipation and re-engagement with the game's world.",
+          "side": "direita",
+          "mediaType": "video",
+          "vimeo": "1214959099",
+          "gif": false,
+          "orientation": "retrato",
+          "thumb": "/uploads/9x16_00000-1.jpg"
+        },
+        {
+          "type": "gallery",
+          "columns": 2,
+          "items": [
+            {
+              "mediaType": "arquivo"
+            },
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/10587c_ef0db4785b1f4fa48e28b258f64a4565~mv2.gif"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
