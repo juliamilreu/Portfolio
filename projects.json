@@ -247,6 +247,33 @@
           "gif": false,
           "orientation": "retrato",
           "thumb": "/uploads/1_00000.jpg"
+        },
+        {
+          "type": "image",
+          "image": "/uploads/screenshots.png",
+          "full": true
+        },
+        {
+          "type": "heading",
+          "text": "Storyboard"
+        },
+        {
+          "type": "image",
+          "image": "/uploads/10587c_87dec955c88a4140902597b63420dce8~mv2.png",
+          "full": true
+        },
+        {
+          "type": "text",
+          "body": "The storyboard process began with close collaboration with the product managers to define which gameplay features and moments would best represent LunaCross. Key visuals were created to highlight the most engaging interactions and user experiences. The copywriting was carefully planned to deliver clear, compelling messages that captured the spirit of the game while optimizing viewer engagement throughout the preview."
+        },
+        {
+          "type": "text_media",
+          "body": "# **App Stores**\n\n### The app preview was adapted to meet both Apple App Store and Google Play Store requirements.  \nEach version follows the platform’s specific dimensions, aspect ratios, and duration limits, ensuring optimal visual quality and performance.\n\n",
+          "side": "esquerda",
+          "mediaType": "imagem",
+          "gif": false,
+          "orientation": "paisagem",
+          "image": "/uploads/Stores.png"
         }
       ]
     }
