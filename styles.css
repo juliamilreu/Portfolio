@@ -195,7 +195,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: var(--bg); }
 .b-divider { display: flex; justify-content: center; margin: 40px 0; }
 .b-divider hr { border: 0; border-top: 1.5px solid var(--dark); width: 110px; margin: 0; }
 .b-divider.full hr { width: 100%; }
-.b-gallery { display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 40px; justify-content: center; justify-items: center; margin: 0 auto; max-width: 70%; }
+.b-gallery { display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 30px; justify-content: center; justify-items: center; margin: 0 auto; max-width: 52.5%; }
 .b-gallery .g-item { width: 100%; min-width: 0; }
 .b-gallery .ratio { border-radius: 15px; aspect-ratio: 1 / 1; }
 .gallery-video .gv-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; transition: opacity .4s ease; border-radius: inherit; }

@@ -197,8 +197,8 @@ content:
       - { name: name, label: "Nome", type: string, required: true }
       - name: logo
         label: "Logo (imagem do nome)"
-        type: image
-        description: "Suba o logo do seu nome (SVG ou PNG transparente). Vazio = usa o texto."
+        type: file
+        description: "Suba o logo do seu nome (SVG ou PNG transparente) ou uma animação Lottie (.json). Vazio = usa o texto."
       - name: footerLogo
         label: "Logo do rodapé"
         type: image
