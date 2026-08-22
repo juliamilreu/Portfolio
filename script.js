@@ -114,7 +114,10 @@ function fillCommon(site) {
       reel._player.ready().then(() => reel._player.getMuted()).then(syncReelMuteIcon).catch(() => {});
       reel._player.on("play", () => reel.classList.remove("paused"));
       reel._player.on("pause", () => reel.classList.add("paused"));
-      reel._player.on("volumechange", (d) => syncReelMuteIcon(d.volume === 0));
+      // Importante: "volumechange" também dispara quando dá mute/unmute (volume numérico
+      // não muda nesse caso), então checamos o estado real de mute em vez do volume —
+      // usar d.volume aqui é o que fazia o ícone voltar sozinho pro estado errado.
+      reel._player.on("volumechange", () => reel._player.getMuted().then(syncReelMuteIcon).catch(() => {}));
     }
     function toggleReelPlay() {
       if (reel._player) {
@@ -237,12 +240,18 @@ function renderGrid(grid, projects, filter) {
 // ---- Página de projeto (construtor de blocos) ----
 function md(s) { return s ? (window.marked ? window.marked.parse(s) : `<p>${s}</p>`) : ""; }
 function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
-function videoEmbed(id, gif, vertical) {
+// Orientação do vídeo: "retrato" (9:16), "quadrado" (1:1) ou o padrão (16:9, paisagem).
+function ratioClass(orientation) {
+  if (orientation === "retrato") return " vertical";
+  if (orientation === "quadrado") return " square";
+  return "";
+}
+function videoEmbed(id, gif, orientation) {
   if (!id) return "";
   const src = gif
     ? `https://player.vimeo.com/video/${id}?background=1&muted=1&loop=1&autoplay=1&dnt=1`
     : `https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0&dnt=1`;
-  return `<div class="ratio${vertical ? " vertical" : ""}"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+  return `<div class="ratio${ratioClass(orientation)}"><iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
 }
 function imgEmbed(src) { return src ? `<img class="b-img" src="${src}" loading="lazy" alt="" />` : ""; }
 // Vídeo de galeria via player do Vimeo (mais confiável que o iframe cru).
@@ -291,17 +300,16 @@ function galleryItemEmbed(it) {
 }
 function mediaEmbed(b) {
   if (b.mediaType === "imagem") return imgEmbed(b.image);
-  const vertical = b.orientation === "retrato";
-  return b.gif !== false ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical, b.thumb);
+  return b.gif !== false ? videoEmbed(b.vimeo, true, b.orientation) : cleanPlayerHtml(b.vimeo, b.orientation, b.thumb);
 }
 // Player limpo (capa + botão de play, sem a barra do Vimeo) para vídeos com som.
 // Estilo "Reels/TikTok": clique em qualquer lugar do vídeo carrega e toca em loop;
 // clique de novo pausa e mostra só o botão grande de play central.
 // Existe apenas um botão pequeno fixo no canto para mudo/com som.
 // thumb: capa enviada por você. Se não tiver, usa a capa automática do Vimeo.
-function cleanPlayerHtml(id, vertical, thumb) {
+function cleanPlayerHtml(id, orientation, thumb) {
   if (!id) return "";
-  return `<div class="ratio clean-player${vertical ? " vertical" : ""}" data-vimeo="${id}">
+  return `<div class="ratio clean-player${ratioClass(orientation)}" data-vimeo="${id}">
     <img class="cp-cover" src="${thumb || ("https://vumbnail.com/" + id + ".jpg")}" alt="" />
     <button class="cp-play" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
     <div class="cp-hit"></div>
@@ -336,7 +344,10 @@ function initCleanPlayers() {
       cp._player.ready().then(() => cp._player.getMuted()).then(syncMuteIcon).catch(() => {});
       cp._player.on("play", () => cp.classList.remove("paused"));
       cp._player.on("pause", () => cp.classList.add("paused"));
-      cp._player.on("volumechange", (d) => syncMuteIcon(d.volume === 0));
+      // Importante: "volumechange" também dispara quando dá mute/unmute (volume numérico
+      // não muda nesse caso), então checamos o estado real de mute em vez do volume —
+      // usar d.volume aqui é o que fazia o ícone voltar sozinho pro estado errado.
+      cp._player.on("volumechange", () => cp._player.getMuted().then(syncMuteIcon).catch(() => {}));
     }
     function togglePlay() {
       if (!cp._player) { startPlayer(); return; }
@@ -383,8 +394,7 @@ function renderBlock(b) {
       return `<div class="b-textmedia ${cls}">${txt}${media}</div>`;
     }
     case "video": {
-      const vertical = b.orientation === "retrato";
-      return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true, vertical) : cleanPlayerHtml(b.vimeo, vertical, b.thumb)}</div>`;
+      return `<div class="b-video">${b.gif ? videoEmbed(b.vimeo, true, b.orientation) : cleanPlayerHtml(b.vimeo, b.orientation, b.thumb)}</div>`;
     }
     case "gallery": {
       const cols = Math.min(Math.max(parseInt(b.columns, 10) || 3, 1), 4);
