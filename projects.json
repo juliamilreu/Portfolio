@@ -222,6 +222,34 @@
           ]
         }
       ]
+    },
+    {
+      "title": "LunaCross App Preview",
+      "slug": "app-preview-lunacross",
+      "vimeo": "1220475624",
+      "previewVimeo": "1220475624",
+      "previewStart": 0,
+      "category": "Motion",
+      "featured": true,
+      "thumb": "/uploads/1z1_00000.jpg",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "LunaCross App Preview",
+          "clientQuote": "\"Crossword, trivia, and anagrams — that's LunaCross. A fun word spelling game!\"",
+          "client": "Fanatee"
+        },
+        {
+          "type": "text_media",
+          "body": "This App Preview was designed to make LunaCross stand out in the App and Play Stores, turning curiosity into downloads. Strong ASO visuals can double conversion rates and significantly grow revenue for mobile word and puzzle games.",
+          "side": "esquerda",
+          "mediaType": "video",
+          "vimeo": "1220475131",
+          "gif": false,
+          "orientation": "retrato",
+          "thumb": "/uploads/1_00000.jpg"
+        }
+      ]
     }
   ]
 }
