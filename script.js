@@ -166,7 +166,9 @@ function ensurePlayer(card) {
   card._player = player;
   card._ready = player.ready();
   card._ready.then(() => {
-    card.classList.add("ready");                 // revela o player (capa some)
+    // Não revela o player aqui — só fica pronto (pré-carregado) em silêncio.
+    // Ele só aparece de fato no mouseenter, pra não esconder a capa estática
+    // assim que o card entra na tela (antes de passar o mouse).
     player.setMuted(true).catch(() => {});
     player.setCurrentTime(start).catch(() => {});
     player.pause().catch(() => {});              // em repouso fica parado no frame inicial
@@ -214,6 +216,7 @@ function makeCard(p) {
       const pl = card._player;
       if (!pl) return;
       (card._ready || Promise.resolve()).then(() => {
+        card.classList.add("ready");              // só revela o player ao passar o mouse
         pl.setCurrentTime(start).catch(() => {});
         pl.play().catch(() => {});
       });
@@ -221,6 +224,7 @@ function makeCard(p) {
     card.addEventListener("mouseleave", () => {
       const start = Number(card.dataset.start) || 0;
       const pl = card._player;
+      card.classList.remove("ready");             // volta a mostrar a capa estática
       if (!pl) return;
       (card._ready || Promise.resolve()).then(() => {
         pl.pause().catch(() => {});
