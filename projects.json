@@ -347,6 +347,72 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Talita Walk Cycle",
+      "slug": "talita-walk-cycle",
+      "vimeo": "1220483153",
+      "previewVimeo": "1220483153",
+      "previewStart": 0,
+      "category": "Motion",
+      "featured": false,
+      "blocks": [
+        {
+          "type": "video",
+          "vimeo": "1220483153",
+          "gif": true,
+          "orientation": "quadrado",
+          "thumb": "/uploads/talita_walk_cycle_v1 (1440p)_00000.jpg"
+        },
+        {
+          "type": "text",
+          "body": "A Walk-Cycle study starring the socialite Talita."
+        },
+        {
+          "type": "heading",
+          "text": "Character Design"
+        },
+        {
+          "type": "text",
+          "body": "This project's challenge was to design a character who conveys her whole personality through simply shapes and colors. Someone who was preppy, elegante and enjoyed a good glass of wine."
+        },
+        {
+          "type": "image",
+          "image": "/uploads/9d2aa3190394279.65ba3e3ba99a1 (1).png",
+          "full": false
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "items": [
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/8c5671190394279.65ba3e39f23f8.gif"
+            },
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/9d5f83190394279.65ba3e39f0d7f.gif"
+            },
+            {
+              "mediaType": "arquivo"
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "columns": 2,
+          "items": [
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/adf0c8190394279.65ba3e3af2a0c.gif"
+            },
+            {
+              "mediaType": "arquivo",
+              "file": "/uploads/d1567c190394279.65ba3e3af1d3b.gif"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
