@@ -211,11 +211,13 @@
           "items": [
             {
               "mediaType": "imagem",
-              "file": "/uploads/10587c_d2c3d2510bad4f89a70f1d9b37db3733~mv2.avif"
+              "file": "/uploads/680_XT3B2668.jpg",
+              "image": "/uploads/680_XT3B2668-1.jpg"
             },
             {
               "mediaType": "imagem",
-              "file": "/uploads/10587c_f8255c90e8714a3dae2b3a666b4e8325~mv2.avif"
+              "file": "/uploads/724_XT3B2843.jpg",
+              "image": "/uploads/724_XT3B2843-1.jpg"
             }
           ]
         }
