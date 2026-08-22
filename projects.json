@@ -103,7 +103,8 @@
           "type": "video",
           "vimeo": "1117236976",
           "gif": false,
-          "orientation": "paisagem"
+          "orientation": "paisagem",
+          "thumb": "/uploads/en_ep_onlyagenius_16x9_30_v1 (1080p)_00000.jpg"
         },
         {
           "type": "text",
@@ -256,11 +257,6 @@
         {
           "type": "heading",
           "text": "Storyboard"
-        },
-        {
-          "type": "image",
-          "image": "/uploads/10587c_87dec955c88a4140902597b63420dce8~mv2.png",
-          "full": false
         },
         {
           "type": "text",
