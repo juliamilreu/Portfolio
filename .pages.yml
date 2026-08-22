@@ -116,11 +116,12 @@ content:
                     label: "Orientação do vídeo"
                     type: select
                     default: "paisagem"
-                    description: "Use 'Retrato' para vídeos verticais (ex.: preview de app/celular) para não ficarem espremidos."
+                    description: "Use 'Retrato' para vídeos verticais (ex.: preview de app/celular) e 'Quadrado' para vídeos 1:1, para não ficarem espremidos."
                     options:
                       values:
                         - { name: paisagem, label: "Paisagem (16:9)" }
                         - { name: retrato, label: "Retrato / vertical (9:16)" }
+                        - { name: quadrado, label: "Quadrado (1:1)" }
                   - name: thumb
                     label: "Capa do vídeo (opcional)"
                     type: image
@@ -135,11 +136,12 @@ content:
                     label: "Orientação do vídeo"
                     type: select
                     default: "paisagem"
-                    description: "Use 'Retrato' para vídeos verticais (ex.: preview de app/celular) para não ficarem espremidos."
+                    description: "Use 'Retrato' para vídeos verticais (ex.: preview de app/celular) e 'Quadrado' para vídeos 1:1, para não ficarem espremidos."
                     options:
                       values:
                         - { name: paisagem, label: "Paisagem (16:9)" }
                         - { name: retrato, label: "Retrato / vertical (9:16)" }
+                        - { name: quadrado, label: "Quadrado (1:1)" }
                   - name: thumb
                     label: "Capa do vídeo (opcional)"
                     type: image

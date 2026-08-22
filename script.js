@@ -282,9 +282,17 @@ function mountGalleryPlayer(container) {
   container._player = player;
   player.ready().then(() => { container.classList.add("ready"); }).catch(() => {});
 }
+// Detecta se o arquivo enviado é uma imagem (jpg/png/webp/gif etc.) em vez de um vídeo real.
+// Isso evita que uma foto enviada no campo "Arquivo" fique invisível (a tag de vídeo não
+// consegue tocar jpg/png, e um .gif "cru" também não toca como vídeo).
+function isImageFile(src) {
+  return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(src || "");
+}
 // Vídeo/gif enviado direto (upload), sem Vimeo: toca mudo, em loop, automático.
+// Se o arquivo enviado for na verdade uma imagem, mostra como imagem em vez de vídeo.
 function galleryFileEmbed(src) {
   if (!src) return "";
+  if (isImageFile(src)) return galleryImageEmbed(src);
   return `<div class="ratio gallery-file"><video src="${src}" muted loop autoplay playsinline></video></div>`;
 }
 // Imagem de galeria dentro da mesma caixa quadrada dos vídeos, pra ficar tudo do mesmo tamanho.
