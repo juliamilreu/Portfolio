@@ -203,6 +203,10 @@ content:
         label: "Logo do rodapé"
         type: image
         description: "Logo que aparece no rodapé, acima do e-mail. Use uma versão clara/branca. Vazio = usa o nome em texto."
+      - name: favicon
+        label: "Favicon (ícone da aba do navegador)"
+        type: file
+        description: "O iconzinho que aparece na aba do navegador e nos favoritos. Use uma imagem quadrada (PNG, SVG ou .ico), de preferência 512x512px ou maior. Vazio = usa o ícone padrão do navegador."
       - { name: heroGreeting, label: "Saudação (ex.: HI!)", type: string, required: true }
       - { name: hero, label: "Texto de apresentação", type: text, required: true }
       - { name: heroEmphasis, label: "Frase em destaque", type: string, required: true }

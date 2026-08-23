@@ -43,6 +43,16 @@ function fillCommon(site) {
       brandEl.innerHTML = `<img class="brand-logo" src="${site.logo}" alt="${esc(site.name || "")}">`;
     }
   }
+  // Favicon (ícone da aba) — se a Julia subir um no CMS, troca o ícone padrão em todas as páginas.
+  if (site.favicon) {
+    let iconLink = document.querySelector('link[rel="icon"]');
+    if (!iconLink) {
+      iconLink = document.createElement("link");
+      iconLink.rel = "icon";
+      document.head.appendChild(iconLink);
+    }
+    iconLink.href = site.favicon;
+  }
   setText("[data-footer-name]", site.name);
   const footerName = document.querySelector("[data-footer-name]");
   if (footerName && site.footerLogo) {
