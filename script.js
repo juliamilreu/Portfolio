@@ -11,6 +11,9 @@ function el(tag, cls, html) {
   return e;
 }
 const PREVIEW_SECONDS = 2.4;
+// Celular/tablet não tem hover — nesses aparelhos o preview toca sozinho quando o card
+// entra na tela, em vez de esperar o mouse passar por cima (que nunca acontece lá).
+const isTouch = typeof window.matchMedia === "function" && window.matchMedia("(hover: none)").matches;
 // Ícone único de som (trocado via innerHTML — nunca dois <svg> ao mesmo tempo).
 const SOUND_ICON_ON = '<path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 12c0-1.77-.77-3.29-2-4.24v8.48c1.23-.95 2-2.47 2-4.24z"/>';
 const SOUND_ICON_OFF = '<path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M19.07 4.93l1.41 1.41L18.4 8.4l2.08 2.08-1.41 1.41L17 9.81l-2.07 2.08-1.41-1.41L15.6 8.4l-2.08-2.08 1.41-1.41L17 7l2.07-2.07z"/>';
@@ -191,6 +194,7 @@ function makeCard(p) {
   const card = el("div", "card");
   const overlay = el("div", "overlay");
   overlay.appendChild(el("div", "meta", `<div class="t">${p.title || ""}</div><div class="c">${p.category || ""}</div>`));
+  let play, stop; // preenchidos abaixo, disparados por hover (mouse) ou por visibilidade (touch)
   if (p.previewFile) {
     // Vídeo enviado (mp4/webm): object-fit cover recorta qualquer proporção em 1:1, 1º frame = capa.
     const v = el("video", "thumb-vid");
@@ -199,18 +203,18 @@ function makeCard(p) {
     v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
     card.append(v);
     if (p.thumb) {
-      // Capa estática enviada: fica por cima até o mouse passar, depois some e revela o vídeo.
+      // Capa estática enviada: fica por cima até o preview começar, depois some e revela o vídeo.
       const img = el("img", "thumb");
       img.src = p.thumb; img.alt = p.title || ""; img.loading = "lazy";
       card.append(img);
       card.classList.add("has-cover");
     }
     card.append(overlay);
-    card.addEventListener("mouseenter", () => { v.play().catch(() => {}); card.classList.add("ready"); });
-    card.addEventListener("mouseleave", () => {
+    play = () => { v.play().catch(() => {}); card.classList.add("ready"); };
+    stop = () => {
       v.pause(); try { v.currentTime = 0; } catch (e) {}
       card.classList.remove("ready");
-    });
+    };
   } else {
     // Preview via Vimeo (vídeo de preview alternativo, ou o principal)
     card.dataset.vimeo = p.previewVimeo || p.vimeo;
@@ -220,27 +224,41 @@ function makeCard(p) {
     img.src = p.thumb || ("https://vumbnail.com/" + (p.previewVimeo || p.vimeo) + ".jpg");
     img.alt = p.title || ""; img.loading = "lazy";
     card.append(player, img, overlay);
-    card.addEventListener("mouseenter", () => {
+    play = () => {
       ensurePlayer(card);
       const start = Number(card.dataset.start) || 0;
-      const pl = card._player;
-      if (!pl) return;
       (card._ready || Promise.resolve()).then(() => {
-        card.classList.add("ready");              // só revela o player ao passar o mouse
+        const pl = card._player;
+        if (!pl) return;
+        card.classList.add("ready");              // só revela o player ao tocar
         pl.setCurrentTime(start).catch(() => {});
         pl.play().catch(() => {});
       });
-    });
-    card.addEventListener("mouseleave", () => {
+    };
+    stop = () => {
       const start = Number(card.dataset.start) || 0;
-      const pl = card._player;
       card.classList.remove("ready");             // volta a mostrar a capa estática
+      const pl = card._player;
       if (!pl) return;
       (card._ready || Promise.resolve()).then(() => {
         pl.pause().catch(() => {});
         pl.setCurrentTime(start).catch(() => {});
       });
-    });
+    };
+  }
+  if (isTouch) {
+    // Sem hover: toca sozinho enquanto o card estiver visível na tela (rolando).
+    let visible = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !visible) { visible = true; play(); }
+        else if (!entry.isIntersecting && visible) { visible = false; stop(); }
+      });
+    }, { threshold: 0.6 });
+    io.observe(card);
+  } else {
+    card.addEventListener("mouseenter", play);
+    card.addEventListener("mouseleave", stop);
   }
   card.addEventListener("click", () => { window.location.href = "project.html?id=" + encodeURIComponent(p.slug); });
   return card;
@@ -499,12 +517,36 @@ function renderProject(projects) {
   initCleanPlayers();
   setupGalleryPlayers();
 }
+// Menu sanduíche (celular): abre/fecha o dropdown com HOME/WORK/ABOUT ME.
+function setupNavToggle() {
+  const toggle = document.querySelector("[data-nav-toggle]");
+  const links = document.querySelector("[data-nav-links]");
+  if (!toggle || !links) return;
+  function close() {
+    links.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+  function open() {
+    links.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+  }
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    links.classList.contains("open") ? close() : open();
+  });
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+  document.addEventListener("click", (e) => {
+    if (links.classList.contains("open") && !e.target.closest(".nav")) close();
+  });
+  window.addEventListener("resize", () => { if (window.innerWidth > 820) close(); });
+}
 async function init() {
   let site = {}, data = { projects: [] };
   try { site = await loadJSON("site.json"); } catch (e) {}
   try { data = await loadJSON("projects.json"); } catch (e) {}
   const projects = data.projects || [];
   fillCommon(site);
+  setupNavToggle();
   setupObserver();
   const grid = document.querySelector("[data-grid]");
   if (grid) {
