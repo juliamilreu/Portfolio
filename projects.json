@@ -198,7 +198,8 @@
           "type": "video",
           "vimeo": "1200250328",
           "gif": false,
-          "orientation": "paisagem"
+          "orientation": "paisagem",
+          "thumb": "/uploads/AGSLA26_Walk-Up_01_Hopper_00000-1.jpg"
         },
         {
           "type": "text",
