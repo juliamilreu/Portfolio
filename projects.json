@@ -28,7 +28,8 @@
           "mediaType": "video",
           "vimeo": "1214806463",
           "gif": false,
-          "orientation": "retrato"
+          "orientation": "retrato",
+          "thumb": "/uploads/CG_Video_2502_AppPreview_1080x1920_00000-1.jpg"
         },
         {
           "type": "gallery",
@@ -60,7 +61,8 @@
           "mediaType": "video",
           "vimeo": "1214958416",
           "gif": false,
-          "orientation": "retrato"
+          "orientation": "retrato",
+          "thumb": "/uploads/1_00000-3.jpg"
         },
         {
           "type": "gallery",
