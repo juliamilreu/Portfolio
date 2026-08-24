@@ -260,7 +260,7 @@ function makeCard(p) {
     card.addEventListener("mouseenter", play);
     card.addEventListener("mouseleave", stop);
   }
-  card.addEventListener("click", () => { window.location.href = "project.html?id=" + encodeURIComponent(p.slug); });
+  card.addEventListener("click", () => { window.location.href = "/" + encodeURIComponent(p.slug); });
   return card;
 }
 function renderGrid(grid, projects, filter) {
@@ -504,7 +504,13 @@ function renderBlock(b) {
 }
 function renderProject(projects) {
   const wrap = document.querySelector("[data-project]");
-  const id = new URLSearchParams(location.search).get("id");
+  let id = new URLSearchParams(location.search).get("id");
+  if (!id) {
+    // Link limpo (ex.: juliamilreu.com/party-in-my-dorm, via redirect do Netlify)
+    // não tem "?id=" — pega o slug direto do caminho da URL.
+    const seg = location.pathname.replace(/\/+$/, "").split("/").filter(Boolean).pop();
+    if (seg && seg !== "project.html" && seg !== "project") id = decodeURIComponent(seg);
+  }
   const p = projects.find(x => x.slug === id) || projects[0];
   if (!p) { wrap.innerHTML = "<p>Projeto não encontrado.</p>"; return; }
   document.title = p.title + " | Julia Milreu";
@@ -512,7 +518,7 @@ function renderProject(projects) {
     ? p.blocks.map(renderBlock).join("")
     : `<div class="b-video">${cleanPlayerHtml(p.vimeo)}</div>`;
   wrap.innerHTML =
-    `<a class="back" href="work.html" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></a>
+    `<a class="back" href="/work.html" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></a>
      <div class="blocks">${blocks}</div>`;
   initCleanPlayers();
   setupGalleryPlayers();
@@ -542,8 +548,8 @@ function setupNavToggle() {
 }
 async function init() {
   let site = {}, data = { projects: [] };
-  try { site = await loadJSON("site.json"); } catch (e) {}
-  try { data = await loadJSON("projects.json"); } catch (e) {}
+  try { site = await loadJSON("/site.json"); } catch (e) {}
+  try { data = await loadJSON("/projects.json"); } catch (e) {}
   const projects = data.projects || [];
   fillCommon(site);
   setupNavToggle();
@@ -557,9 +563,18 @@ async function init() {
       // WORK: filtros por categoria
       const filterBar = document.querySelector("[data-filters]");
       const cats = ["ALL", ...Array.from(new Set(projects.map(p => p.category).filter(Boolean)))];
+      // Link direto pro filtro (ex.: juliamilreu.com/work/motion) — pra poder mandar
+      // pra um cliente já filtrado só no que interessa pra ele.
+      const slugifyCat = (s) => s.toLowerCase().trim().replace(/\s+/g, "-");
+      let wantedCat = new URLSearchParams(location.search).get("cat");
+      if (!wantedCat) {
+        const m = location.pathname.match(/^\/work\/([^\/]+)\/?$/i);
+        if (m) wantedCat = decodeURIComponent(m[1]);
+      }
+      const initialCat = (wantedCat && cats.find(c => slugifyCat(c) === wantedCat.toLowerCase())) || "ALL";
       if (filterBar) {
-        cats.forEach((c, i) => {
-          const b = el("button", i === 0 ? "active" : null, c.toUpperCase());
+        cats.forEach((c) => {
+          const b = el("button", c === initialCat ? "active" : null, c.toUpperCase());
           b.addEventListener("click", () => {
             if (b.classList.contains("active")) return;
             filterBar.querySelectorAll("button").forEach(x => x.classList.remove("active", "pop"));
@@ -567,11 +582,16 @@ async function init() {
             void b.offsetWidth; // reinicia a animação mesmo se clicado de novo rápido
             b.classList.add("pop");
             renderGrid(grid, projects, c);
+            // Atualiza o link da página pra refletir o filtro atual (dá pra copiar e mandar).
+            const url = new URL(location.href);
+            url.search = "";
+            url.pathname = c === "ALL" ? "/work.html" : "/work/" + slugifyCat(c);
+            history.replaceState(null, "", url);
           });
           filterBar.appendChild(b);
         });
       }
-      renderGrid(grid, projects, "ALL");
+      renderGrid(grid, projects, initialCat);
     }
   }
   if (document.querySelector("[data-project]")) renderProject(projects);

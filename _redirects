@@ -1,0 +1,11 @@
+# Link limpo pro filtro da página WORK: juliamilreu.com/work/motion
+# (precisa vir antes da regra de projeto, já que "/work/motion" tem 2 partes
+# no caminho — mas isso não conflita mesmo, cada regra pega tamanhos diferentes)
+/work/:cat  /work.html  200
+
+# Links limpos pros projetos: juliamilreu.com/nome-do-projeto
+# em vez de juliamilreu.com/project.html?id=nome-do-projeto
+# (arquivos que já existem no site, como /work.html, /styles.css etc.,
+# continuam funcionando normalmente — essa regra só entra em ação
+# quando o caminho não bate com nenhum arquivo real do site.)
+/:slug  /project.html  200
