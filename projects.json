@@ -23,7 +23,7 @@
         },
         {
           "type": "text_media",
-          "body": "Card Guardians needed an engaging App Preview video to boost performance in paid ad campaigns. The goal was increase CTR (clickthrough rate).\n\nThe audience consisted mostly of male players aged 21–34, fans of RPG and strategy mechanics, motivated by mastery, skill improvement, and tactical depth.\n\n​**The Approach**\n\nTo stand out in crowded mobile game ads, the focus was in combining authentic gameplay with cinematic visual effects. The hypothesis was that fast-paced editing, dynamic camera cuts, and synchronized VFX/SFX paired with an epic soundtrack would amplify the excitement and communicate the game’s strategic intensity.​\n\n**The Result**​\n\nThe final motion was designed in multiple formats (vertical, horizontal and square) for Google Ads, Meta Ads and App Stores, all under 30 seconds.  \nEvery element was tuned to capture attention in the first seconds, showcase progression, and convey the game’s epic scale.",
+          "body": "Card Guardians needed an engaging App Preview video to boost performance in paid ad campaigns. The goal was increase CTR (clickthrough rate).\n\nThe audience consisted mostly of male players aged 21-34, fans of RPG and strategy mechanics, motivated by mastery, skill improvement, and tactical depth.\n\n​**The Approach**\n\nTo stand out in crowded mobile game ads, the focus was in combining authentic gameplay with cinematic visual effects. The hypothesis was that fast-paced editing, dynamic camera cuts, and synchronized VFX/SFX paired with an epic soundtrack would amplify the excitement and communicate the game’s strategic intensity.​\n\n**The Result**​\n\nThe final motion was designed in multiple formats (vertical, horizontal and square) for Google Ads, Meta Ads and App Stores, all under 30 seconds.  \nEvery element was tuned to capture attention in the first seconds, showcase progression, and convey the game’s epic scale.",
           "side": "esquerda",
           "mediaType": "video",
           "vimeo": "1214806463",
@@ -96,10 +96,10 @@
       "blocks": [
         {
           "type": "header",
-          "title": "Everyday Puzzles",
-          "subtitle": "UA Motion Design",
+          "title": "Everyday Puzzles - Only a Genius",
+          "subtitle": "Creative Ad",
           "clientQuote": "\"Multiple Games in One App! A hub of word puzzles and brain teasers to keep you entertained daily!\"",
-          "client": "Client: Fanatee"
+          "client": "Fanatee"
         },
         {
           "type": "video",
@@ -239,7 +239,7 @@
         {
           "type": "header",
           "title": "LunaCross App Preview",
-          "clientQuote": "\"Crossword, trivia, and anagrams — that's LunaCross. A fun word spelling game!\"",
+          "clientQuote": "\"Crossword, trivia, and anagrams - that's LunaCross. A fun word spelling game!\"",
           "client": "Fanatee"
         },
         {
@@ -299,7 +299,7 @@
         },
         {
           "type": "text_media",
-          "body": "**The Challenge**\n\nDrive higher CTR for a mobile game targeting women 35–44, an audience motivated by collection, emotional connection, and mastery.​​\n\n**The Approach** \n\nI've designed a 30-second video around authentic gameplay moments - pet variety, shop management flow and emotional triggers - to build connection with the target audience. ​​\n\n**The Result​**\n\nA multi-ratio video adapted for Google Ads, Meta Ads, and App Stores - translating the game's core experience into a conversion-focused creative.",
+          "body": "**The Challenge**\n\nDrive higher CTR for a mobile game targeting women 35-44, an audience motivated by collection, emotional connection, and mastery.​​\n\n**The Approach** \n\nI've designed a 30-second video around authentic gameplay moments - pet variety, shop management flow and emotional triggers - to build connection with the target audience. ​​\n\n**The Result​**\n\nA multi-ratio video adapted for Google Ads, Meta Ads, and App Stores - translating the game's core experience into a conversion-focused creative.",
           "side": "esquerda",
           "mediaType": "video",
           "vimeo": "1220478755",
@@ -462,6 +462,35 @@
               "vimeo": "1220589506"
             }
           ]
+        }
+      ]
+    },
+    {
+      "title": "Crosswords Mental IQ ",
+      "slug": "crosswords-mental-iq",
+      "vimeo": "1220921512",
+      "previewVimeo": "1221888519",
+      "previewStart": 0,
+      "category": "Motion",
+      "featured": false,
+      "thumb": "/uploads/Poster_00000-1.jpg",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "Everyday Puzzles - Mental IQ",
+          "subtitle": "Creative Ad",
+          "clientQuote": "\"Multiple Games in One App! A hub of word puzzles and brain teasers to keep you entertained daily!\"",
+          "client": "Fanatee"
+        },
+        {
+          "type": "text_media",
+          "body": "**The Challenge**  \nDrive installs for a word-puzzle app in a feed saturated with lookalike crossword ads, where a straightforward gameplay demo gets scrolled past in under a second.\n\n**The Approach**  \nThe ad turns the clue itself into the hook: a real pop-culture reference paired with a fake IQ counter. A playful, hand-drawn cursor against the clean app UI made the mechanic instantly readable.\n\n**The Result**  \nThe ad delivered well and held up across placements. Adapted into 4 main formats for the major ad platforms, and localized across several countries with pop culture clues tailored to each region's audience.\n\n",
+          "side": "direita",
+          "mediaType": "video",
+          "vimeo": "1220921512",
+          "gif": false,
+          "orientation": "retrato",
+          "thumb": "/uploads/enCrosswordMentalIQ_9x16_030_00000.jpg"
         }
       ]
     }
