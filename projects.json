@@ -180,8 +180,8 @@
           ]
         },
         {
-          "type": "text",
-          "body": "Amazônia Urbana - São Paulo"
+          "type": "heading",
+          "text": "Amazônia Urbana - São Paulo"
         },
         {
           "type": "text_media",
@@ -198,10 +198,12 @@
           "columns": 2,
           "items": [
             {
-              "mediaType": "imagem"
+              "mediaType": "imagem",
+              "image": "/uploads/App Growth Summit Brasil _20260805_0639.jpg"
             },
             {
-              "mediaType": "imagem"
+              "mediaType": "imagem",
+              "image": "/uploads/App Growth Summit Brasil _20260805_0635.jpg"
             }
           ]
         }
