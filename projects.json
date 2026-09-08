@@ -494,6 +494,50 @@
           "thumb": "/uploads/enCrosswordMentalIQ_9x16_030_00000.jpg"
         }
       ]
+    },
+    {
+      "title": "AGS Recap Video",
+      "slug": "Ags-recap-video",
+      "vimeo": "1221905320",
+      "previewVimeo": "1225009333",
+      "previewStart": 0,
+      "category": "Video Edition",
+      "featured": false,
+      "thumb": "/uploads/AGSLA26_Post-Event-Recap_00000.jpg",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "AGS Recap Videos",
+          "subtitle": "Event Video Edition",
+          "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
+          "client": "App Growth Summit"
+        },
+        {
+          "type": "text",
+          "body": "A full day of keynotes, panels, and networking turned into the Official Recap video published on AGS's event pages and YouTube channel.\n\nEach video condenses talks and networking into a short edit, with consistent motion graphics and brand treatment applied across cities.\n\nAGS uses the recaps to promote each next edition to speakers, sponsors, and attendees."
+        },
+        {
+          "type": "video",
+          "vimeo": "1221905320",
+          "gif": false,
+          "orientation": "paisagem",
+          "thumb": "/uploads/AGSLA26_Recap-Thumbnail_V2.jpg"
+        },
+        {
+          "type": "video",
+          "vimeo": "1221905319",
+          "gif": false,
+          "orientation": "paisagem",
+          "thumb": "/uploads/AGSLA26_Post-Event-Recap_00000-1.jpg"
+        },
+        {
+          "type": "video",
+          "vimeo": "1221905318",
+          "gif": false,
+          "orientation": "paisagem",
+          "thumb": "/uploads/AGSSP26_Post-Event-Recap_00000.jpg"
+        }
+      ]
     }
   ]
 }
