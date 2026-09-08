@@ -144,10 +144,14 @@
       "blocks": [
         {
           "type": "header",
-          "title": "Sky High Sounds After Party",
-          "subtitle": "AGS San Francisco 2025",
+          "title": "AGS After Party Posters",
+          "subtitle": "Motion Graphics for Events",
           "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
           "client": "App Growth Summit"
+        },
+        {
+          "type": "heading",
+          "text": "Sky High Sounds - San Francisco"
         },
         {
           "type": "text_media",
@@ -172,6 +176,32 @@
               "mediaType": "imagem",
               "file": "/uploads/724_XT3B2843.jpg",
               "image": "/uploads/724_XT3B2843-1.jpg"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "body": "Amazônia Urbana - São Paulo"
+        },
+        {
+          "type": "text_media",
+          "body": "Graffiti lettering, tropical textures and a green-and-yellow palette gave São Paulo's rooftop after party its visual identity within the AGS series.\n\nBuilt as one system rather than a single asset, the artwork ran across venue screens, printed signage, social posts, and the event website, with an animated version adapted for square formats.",
+          "side": "direita",
+          "mediaType": "video",
+          "vimeo": "1225019086",
+          "gif": true,
+          "orientation": "quadrado",
+          "thumb": "/uploads/a_00000.jpg"
+        },
+        {
+          "type": "gallery",
+          "columns": 2,
+          "items": [
+            {
+              "mediaType": "imagem"
+            },
+            {
+              "mediaType": "imagem"
             }
           ]
         }
