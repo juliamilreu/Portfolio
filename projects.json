@@ -550,6 +550,36 @@
           "thumb": "/uploads/AGSSP26_Post-Event-Recap_00000.jpg"
         }
       ]
+    },
+    {
+      "title": "Los Angeles Kick-Off Video",
+      "slug": "AGS-kick-off-video",
+      "vimeo": "1221905321",
+      "previewVimeo": "1225017619",
+      "previewStart": 0,
+      "category": "Video Edition",
+      "featured": false,
+      "thumb": "/uploads/poster_00000.jpg",
+      "blocks": [
+        {
+          "type": "header",
+          "title": "AGS Los Angeles",
+          "subtitle": "Kick-Off Video",
+          "clientQuote": "\"Global community-first experiences where actionable content and positive atmosphere unite!\"",
+          "client": "App Growth Summit"
+        },
+        {
+          "type": "video",
+          "vimeo": "1221905321",
+          "gif": false,
+          "orientation": "paisagem",
+          "thumb": "/uploads/poster1_00000.jpg"
+        },
+        {
+          "type": "text",
+          "body": "The video was edited and designed to open AGS Los Angeles 2026, played to the room before the day's sessions start.\n\nThe 30-second cut moves through highlights from past AGS events such as speaker sessions, networking, catering and the after-party. Under bold motion graphic tags for Expert Speakers, Curated Sessions, and Great Networking, closing on the AGS Los Angeles brand card and event date.\n\nIt's the first thing attendees see, helping in setting the tone for the day ahead."
+        }
+      ]
     }
   ]
 }
